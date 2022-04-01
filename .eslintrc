@@ -1,0 +1,27 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+        "airbnb",
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "rules": {
+        "strict": 0,
+        "import/prefer-default-export": "off",
+        "react/prop-types": "off",
+        "max-len": "warn",
+        "no-unused-expressions": "warn",
+        "no-unused-vars": "warn",
+        "react/no-array-index-key": "off",
+        "react/display-name": [
+            "error",
+            {
+              "ignoreTranspilerName": false
+            }
+        ],
+        "react/destructuring-assignment": "off"
+    },
+    "plugins": [
+        "react"
+    ]
+}
