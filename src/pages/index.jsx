@@ -1,15 +1,43 @@
 import * as React from 'react';
+
+import { graphql } from 'gatsby';
+
 import Slider from '../components/carousel';
-import Header from '../components/header';
-import EnterprisePage from '../templates/enterprise';
+import Layout from '../components/layout';
+import CardEnterprise from '../components/card-enterprise';
 
-export default function Index() {
-  return (
-    <div>
-      <Header />
-      <Slider />
+export const query = graphql`query {
 
-      <EnterprisePage />
-    </div>
-  );
+
+    allContentfulLancamentos {
+        edges {
+          node {
+            id
+            title
+            slug
+            bannerDesktop {
+              url
+              title
+              description
+            }
+            bannerMobile {
+              url
+              title
+              description
+            }
+            miniDescricao1
+            miniDescricao2
+          }
+        }
+      }
 }
+`;
+
+const Index = ({ data }) => (
+  <Layout>
+    <Slider data={data.allContentfulLancamentos} />
+    <CardEnterprise data={data.allContentfulLancamentos} type="Lançamento" />
+  </Layout>
+);
+
+export default Index;

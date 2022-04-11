@@ -1,16 +1,14 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql, Link } from 'gatsby';
 
-const EnterprisePage = () => (
+const LancamentosPage = () => (
   <StaticQuery
     query={
           graphql`query {
-                  allContentfulNovosEmpreendimentos {
+                  allContentfulLancamentos {
                       edges {
                           node {
-                              description {
-                                  raw
-                              }
+                              slug
                               title
                               id
                           }
@@ -21,14 +19,15 @@ const EnterprisePage = () => (
       }
     render={(data) => (
       <section>
-        {data.allContentfulNovosEmpreendimentos.edges.map(({ node }) => (
+        {data.allContentfulLancamentos.edges.map(({ node }) => (
           <div key={node.id}>
             <h1>{node.title}</h1>
-            <section>{node.raw}</section>
+            <h2>{node.slug}</h2>
+            <Link to={`${node.slug}`}>Saiba mais</Link>
           </div>
         ))}
       </section>
     )}
   />
 );
-export default EnterprisePage;
+export default LancamentosPage;

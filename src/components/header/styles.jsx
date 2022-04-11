@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { Navbar, Nav } from 'react-bootstrap';
 
-import { colors } from '../../utils/colors.json';
+import { colors } from '../../utils/colors';
 
 export const NavbarComponent = styled(Navbar)`
-    background: ${colors['theme-color']};
+    background: ${colors.themeColor};
     color: ${colors.primary};
 
     @media (min-width: 992px) {
@@ -37,7 +37,7 @@ export const NavLink = styled(Nav.Link)`
         padding: 0 20px !important;
 
         &.active {
-            background: ${colors['transparent-white']};
+            background: ${colors.transparentWhite};
             border-bottom: 3px solid ${colors.white};
         }
     }

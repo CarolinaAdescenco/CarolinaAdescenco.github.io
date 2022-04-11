@@ -31,24 +31,27 @@ const social = [
 ];
 
 const Header = () => (
-  <NavbarComponent variant="dark" expand="lg" sticky="top">
-    <Container>
-      <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <NavbarCollapse id="basic-navbar-nav">
-        <NavComponent className="me-auto">
-          <NavLink href="/">Lançamentos</NavLink>
-          <NavLink href="#1">Portfólio</NavLink>
-          <NavLink href="#2">Prêmios</NavLink>
-          <NavLink href="#3">Mídia</NavLink>
-          <NavLink href="#4">Contato</NavLink>
-          <NavLink href="#5">Sobre</NavLink>
-        </NavComponent>
-      </NavbarCollapse>
+  <header>
+    <NavbarComponent variant="dark" expand="lg" sticky="top">
+      <Container>
+        <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <NavbarCollapse id="basic-navbar-nav">
+          <NavComponent className="me-auto">
+            <NavLink href="/">Lançamentos</NavLink>
+            <NavLink href="#1">Portfólio</NavLink>
+            <NavLink href="#2">Prêmios</NavLink>
+            <NavLink href="#3">Mídia</NavLink>
+            <NavLink href="#4">Contato</NavLink>
+            <NavLink href="#5">Sobre</NavLink>
+          </NavComponent>
+        </NavbarCollapse>
 
-      <Social />
-    </Container>
-  </NavbarComponent>
+        <Social />
+      </Container>
+    </NavbarComponent>
+
+  </header>
 );
 
 const Social = () => (
