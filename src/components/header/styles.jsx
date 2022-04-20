@@ -1,7 +1,15 @@
 import styled from 'styled-components';
 import { Navbar, Nav } from 'react-bootstrap';
+import { Link } from 'gatsby';
 
 import { colors } from '../../utils/colors';
+
+export const HeaderComponent = styled.header`
+    position: relative;
+    z-index: 999;
+    -webkit-box-shadow: 0px 4px 8px 1px #000000;
+    box-shadow: 0px 4px 8px 1px #000000;
+`;
 
 export const NavbarComponent = styled(Navbar)`
     background: ${colors.themeColor};
@@ -29,7 +37,15 @@ export const NavComponent = styled(Nav)`
     }
 `;
 
-export const NavLink = styled(Nav.Link)`
+export const NavLink = styled(Link)`
+    color: ${colors.white};
+    text-decoration: none;
+
+    &:hover{
+        color: ${colors.transparentWhite2};
+        background-color: ${colors.transparentWhite};
+    }
+
     @media (min-width: 992px) {
         display: flex !important;
         align-items: center;

@@ -2,9 +2,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // custom typefaces
 import '@fontsource/lato';
-
-// normalize CSS across browsers
-import './src/css/normalize.css';
+import '@fontsource/lato/100-italic.css';
+import '@fontsource/lato/300-italic.css';
+import '@fontsource/lato/700-italic.css';
+import '@fontsource/lato/900-italic.css';
 
 // custom CSS styles
 import './src/css/style.css';

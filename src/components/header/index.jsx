@@ -5,7 +5,7 @@ import { ImWhatsapp, ImFacebook, ImTwitter } from 'react-icons/im';
 import { AiOutlineInstagram, AiOutlineYoutube } from 'react-icons/ai';
 
 import {
-  NavbarComponent, NavLink, NavbarCollapse, NavComponent, SocialContainer,
+  NavbarComponent, NavLink, NavbarCollapse, NavComponent, SocialContainer, HeaderComponent,
 } from './styles';
 
 const social = [
@@ -30,20 +30,52 @@ const social = [
   },
 ];
 
+const navLinks = [
+  {
+    path: '/lancamentos',
+    text: 'Lançamentos',
+  },
+  {
+    path: '/portfolio',
+    text: 'Portfólio',
+  },
+  {
+    path: '/premios',
+    text: 'Premios',
+  },
+  {
+    path: '/midia',
+    text: 'Mídia',
+  },
+  {
+    path: '/sobre',
+    text: 'Sobre',
+  },
+  {
+    path: '/contato',
+    text: 'Contato',
+  },
+];
+
 const Header = () => (
-  <header>
-    <NavbarComponent variant="dark" expand="lg" sticky="top">
+  <HeaderComponent>
+    <NavbarComponent variant="dark" expand="lg" sticky>
       <Container>
         <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <NavbarCollapse id="basic-navbar-nav">
           <NavComponent className="me-auto">
-            <NavLink href="/">Lançamentos</NavLink>
-            <NavLink href="#1">Portfólio</NavLink>
-            <NavLink href="#2">Prêmios</NavLink>
-            <NavLink href="#3">Mídia</NavLink>
-            <NavLink href="#4">Contato</NavLink>
-            <NavLink href="#5">Sobre</NavLink>
+            {
+                navLinks.map((link, index) => (
+                  <NavLink
+                    key={index}
+                    to={link.path}
+                    activeClassName="active"
+                  >
+                    {link.text}
+                  </NavLink>
+                ))
+            }
           </NavComponent>
         </NavbarCollapse>
 
@@ -51,7 +83,7 @@ const Header = () => (
       </Container>
     </NavbarComponent>
 
-  </header>
+  </HeaderComponent>
 );
 
 const Social = () => (
