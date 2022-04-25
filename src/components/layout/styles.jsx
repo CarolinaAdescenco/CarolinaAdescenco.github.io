@@ -128,3 +128,23 @@ export const Figure = styled.figure`
         }
     }
 `;
+
+export const WhatsAppButton = styled.a`
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: ${colors.white};
+    font-size: 26px;
+    background-color: ${colors.green};
+    -webkit-box-shadow: 6px 12px 25px -5px rgba(0,0,0,0.67);
+    box-shadow: 6px 12px 25px -5px rgba(0,0,0,0.67);
+`;

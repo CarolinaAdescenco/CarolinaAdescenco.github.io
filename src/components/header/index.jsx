@@ -1,34 +1,13 @@
 import React from 'react';
 import { Navbar, Container } from 'react-bootstrap';
-
-import { ImWhatsapp, ImFacebook, ImTwitter } from 'react-icons/im';
 import { AiOutlineInstagram, AiOutlineYoutube } from 'react-icons/ai';
+import { ImFacebook, ImTwitter, ImWhatsapp } from 'react-icons/im';
+
+import { data } from '../../utils/data';
 
 import {
-  NavbarComponent, NavLink, NavbarCollapse, NavComponent, SocialContainer, HeaderComponent,
+  NavbarComponent, NavLink, NavbarCollapse, NavComponent, HeaderComponent, SocialContainer,
 } from './styles';
-
-const social = [
-  {
-    icon: <ImWhatsapp />,
-    path: 'https://react-icons.github.io/react-icons/search?q=youtube',
-  },
-  {
-    icon: <ImFacebook />,
-    path: '1234',
-  },
-  {
-    icon: <AiOutlineInstagram />,
-    path: '1235',
-  },
-  {
-    icon: <ImTwitter />,
-    path: '1236',
-  }, {
-    icon: <AiOutlineYoutube />,
-    path: '1237',
-  },
-];
 
 const navLinks = [
   {
@@ -38,10 +17,6 @@ const navLinks = [
   {
     path: '/portfolio',
     text: 'Portfólio',
-  },
-  {
-    path: '/premios',
-    text: 'Premios',
   },
   {
     path: '/midia',
@@ -64,7 +39,7 @@ const Header = () => (
         <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <NavbarCollapse id="basic-navbar-nav">
-          <NavComponent className="me-auto">
+          <NavComponent>
             {
                 navLinks.map((link, index) => (
                   <NavLink
@@ -76,22 +51,44 @@ const Header = () => (
                   </NavLink>
                 ))
             }
+
+            <Social />
+
           </NavComponent>
         </NavbarCollapse>
-
-        <Social />
       </Container>
     </NavbarComponent>
 
   </HeaderComponent>
 );
 
-const Social = () => (
-  <SocialContainer>
-    { social.map((media, i) => (
-      <a key={i} href={media.path} target="_blank" rel="noreferrer">{media.icon}</a>
-    )) }
-  </SocialContainer>
-);
+const Social = () => {
+  const { social } = data;
+
+  function useIcon(name) {
+    switch (name) {
+      case 'whatsapp':
+        return <ImWhatsapp />;
+      case 'facebook':
+        return <ImFacebook />;
+      case 'instagram':
+        return <AiOutlineInstagram />;
+      case 'twitter':
+        return <ImTwitter />;
+      case 'youtube':
+        return <AiOutlineYoutube />;
+      default:
+        return <></>;
+    }
+  }
+
+  return (
+    <SocialContainer className="d-lg-none">
+      {social.map((item, i) => (
+        <a key={i} href={item.path} target="_blank" rel="noreferrer">{useIcon(item.name)}</a>
+      ))}
+    </SocialContainer>
+  );
+};
 
 export default Header;

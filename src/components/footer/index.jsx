@@ -62,7 +62,7 @@ const Footer = () => {
             </IconRow>
           </Col>
 
-          <Col className="col-12 col-lg-4">
+          <Col className="col-12 col-lg-4 mt-4 mt-lg-0">
             <Logos>
               <img
                 src={SeloAbrinq}

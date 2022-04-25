@@ -26,12 +26,20 @@ export const NavbarComponent = styled(Navbar)`
 `;
 
 export const NavbarCollapse = styled(Navbar.Collapse)`
+    &.show{
+        height: 100vh;
+    }
+
     @media (min-width: 992px) {
         height: 100%;
     }
 `;
 
 export const NavComponent = styled(Nav)`
+    height: inherit;
+    justify-content: center;
+    margin-left: auto;
+
     @media (min-width: 992px) {
         height: 100%;
     }
@@ -40,6 +48,17 @@ export const NavComponent = styled(Nav)`
 export const NavLink = styled(Link)`
     color: ${colors.white};
     text-decoration: none;
+    text-align: center;
+
+    @media(max-width: 991px){
+        width: 300px;
+        margin: 0 auto;
+        padding: 16px 0;
+
+        &.active {
+            background: ${colors.transparentWhite};
+        }
+    }
 
     &:hover{
         color: ${colors.transparentWhite2};
@@ -62,11 +81,13 @@ export const NavLink = styled(Link)`
 export const SocialContainer = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
+    height: 200px;
 
     a{
         color: ${colors.gray};
         font-size: 21px;
-        margin: 0 4.5px;
+        margin: 0 8px;
 
         transition: all .2s;
 

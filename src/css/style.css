@@ -20,3 +20,7 @@ body {
     font-family: 'Lato' sans-serif !important;
     background-color: var(--theme-color);
 }
+
+button, a{
+    cursor: pointer;
+}
