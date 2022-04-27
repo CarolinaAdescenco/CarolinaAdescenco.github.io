@@ -7,7 +7,9 @@ import styled from 'styled-components';
 
 import { Col, Row } from 'react-bootstrap';
 import Layout from '../components/layout';
-import { Button, TitlePage } from '../components/layout/styles';
+import {
+  Button, Container, Iframe, TitlePage,
+} from '../components/layout/styles';
 
 import { Input, InputPhone, Select } from '../components/form';
 import { colors } from '../utils/colors';
@@ -55,62 +57,68 @@ const Contato = ({ data }) => {
 
   return (
     <Layout>
-      <TitlePage>Contato</TitlePage>
+      <Container>
 
-      <Row className="justify-content-center">
-        <Col className="col-12 col-lg-6">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Input
-              type="text"
-              label="Nome"
-              register={register}
-              required
-            />
+        <TitlePage>Contato</TitlePage>
 
-            <Input
-              type="email"
-              label="E-mail"
-              register={register}
-              required
-            />
+        <Row className="justify-content-center">
+          <Col className="col-12 col-lg-6 order-2 order-lg-1">
+            <Iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.3814109107584!2d-46.708610684342744!3d-23.554741267234537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce57b59b835283%3A0xf6f9722e2f2125b1!2sAv.%20Pedroso%20de%20Morais%2C%202580%20-%20Pinheiros%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2005420-003!5e0!3m2!1spt-BR!2sbr!4v1650884810934!5m2!1spt-BR!2sbr" allowFullScreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" />
+          </Col>
+          <Col className="col-12 col-lg-6 order-1 order-lg-2">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Input
+                type="text"
+                label="Nome"
+                register={register}
+                required
+              />
 
-            <InputPhone
-              mask="(99) 99999-9999"
-              label="Celular"
-              register={register}
-              required
-            />
+              <Input
+                type="email"
+                label="E-mail"
+                register={register}
+                required
+              />
 
-            <Select
-              label="Projeto"
-              register={register}
-              required
-              values={projetos}
-            />
+              <InputPhone
+                mask="(99) 99999-9999"
+                label="Celular"
+                register={register}
+                required
+              />
 
-            <Row className="mt-4 mb-3">
-              <Col>
-                <Input
-                  type="checkbox"
-                  label="Sou cliente"
-                  register={register}
-                />
-              </Col>
-              <Col>
-                <Input
-                  type="checkbox"
-                  label="Sou corretor"
-                  register={register}
-                />
-              </Col>
-            </Row>
+              <Select
+                label="Projeto"
+                register={register}
+                required
+                values={projetos}
+              />
 
-            <Button type="submit">
-              { loading ? <LoadSnake /> : 'Enviar' }
-            </Button>
-          </form>
-        </Col>
-      </Row>
+              <Row className="mt-4 mb-3">
+                <Col>
+                  <Input
+                    type="checkbox"
+                    label="Sou cliente"
+                    register={register}
+                  />
+                </Col>
+                <Col>
+                  <Input
+                    type="checkbox"
+                    label="Sou corretor"
+                    register={register}
+                  />
+                </Col>
+              </Row>
+
+              <Button type="submit">
+                { loading ? <LoadSnake /> : 'Enviar' }
+              </Button>
+            </form>
+          </Col>
+        </Row>
+      </Container>
     </Layout>
   );
 };

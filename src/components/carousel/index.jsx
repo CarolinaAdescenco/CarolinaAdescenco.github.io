@@ -13,7 +13,7 @@ const Slider = ({ data }) => {
   return (
     <Carousel controls={false} fade>
       {edges.map(({ node }, i) => (
-        <CarouselItem key={i} bg={node.image}>
+        <CarouselItem key={i}>
           <img
             className="d-none d-md-flex w-100 desktop"
             src={node.bannerDesktop.url}

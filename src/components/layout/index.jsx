@@ -19,9 +19,7 @@ const Layout = ({ children }) => {
       <Header />
       <Seo />
       <section>
-        <Container>
-          {children}
-        </Container>
+        {children}
       </section>
       <Footer />
       <CookieConsent

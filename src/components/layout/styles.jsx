@@ -148,3 +148,8 @@ export const WhatsAppButton = styled.a`
     -webkit-box-shadow: 6px 12px 25px -5px rgba(0,0,0,0.67);
     box-shadow: 6px 12px 25px -5px rgba(0,0,0,0.67);
 `;
+
+export const Iframe = styled.iframe`
+    width: 100%;
+    height: 100%;
+`;

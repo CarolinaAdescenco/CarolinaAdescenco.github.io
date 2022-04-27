@@ -13,7 +13,8 @@ export const Group = styled.div`
         flex-direction: row !important;
 
         label{
-            margin: 0 16px 0 0;
+            margin: 0 0 0 16px;
+            order: 2;
         }
     }
 `;
