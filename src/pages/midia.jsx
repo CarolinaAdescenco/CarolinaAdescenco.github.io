@@ -38,7 +38,7 @@ const Midia = ({ data }) => {
         <Figure>
           <img
             className="img-fluid"
-            src={BannerWW}
+            src="https://gd8.com.br/imagens-gd8/premio-gd8-west-whales.jpeg"
             alt="Prêmio Master Imobiliário GD8 - West Whales"
             title="Prêmio Master Imobiliário GD8 - West Whales"
           />

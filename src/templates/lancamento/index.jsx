@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
-import Lightbox from 'react-image-lightbox';
+import Gallery from '@browniebroke/gatsby-image-gallery';
 
-import Slider from '../../components/carousel';
 import Layout from '../../components/layout';
-import { Button, CarouselItem, Figure } from './styles';
+import { Button, Figure } from './styles';
+import Lightbox from '../../components/lightbox';
 
 const LancamentoPost = (content) => {
   const {
@@ -23,8 +23,11 @@ const LancamentoPost = (content) => {
     galeria,
   } = content.pageContext;
 
-  const [photoIndex, setPhotoIndex] = React.useState(0);
-  const [open, setOpen] = React.useState(false);
+  const images = plantas.map((planta) => planta.url);
+
+  React.useEffect(() => {
+    console.log(images);
+  }, []);
 
   return (
     <Layout>
@@ -45,19 +48,7 @@ const LancamentoPost = (content) => {
       <Container>
         <Row>
           <Col className="col-12 col-lg-6">
-            <button type="button" onClick={() => setOpen(true)}>
-              Open Lightbox
-            </button>
-
-            {open && (
-            <Lightbox
-              mainSrc={plantas[photoIndex]}
-              nextSrc={plantas[(photoIndex + 1) % plantas.length]}
-              prevSrc={plantas[(photoIndex + plantas.length - 1) % plantas.length]}
-              onCloseRequest={() => setOpen(false)}
-// https://www.npmjs.com/package/react-image-lightbox
-            />
-            )}
+            <Lightbox data={images} />
           </Col>
         </Row>
       </Container>
