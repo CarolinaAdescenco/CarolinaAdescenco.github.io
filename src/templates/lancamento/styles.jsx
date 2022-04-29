@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Container as Cont } from 'react-bootstrap';
 
 import { colors } from '../../utils/colors';
 
@@ -28,7 +29,7 @@ export const Figure = styled.figure`
         border-radius: 3px;
         padding: 20px;
 
-        margin-top: 100px;
+        margin-top: 90px;
 
         ul{
             margin: 0;
@@ -92,6 +93,7 @@ export const Button = styled.button`
     padding: 16px 0;
     margin:  0 0 16px 0;
 
+    font-size: 18px;
     color: ${colors.white};
     font-weight: 200;
     white-space: nowrap;
@@ -101,4 +103,36 @@ export const Button = styled.button`
     &:hover{
         background: ${colors.themeColor3};
     }
+`;
+
+export const Subtitulo = styled.h3`
+    color: ${colors.white};
+    font-weight: 300;
+    margin-bottom: 24px;
+    padding-left: 24px;
+    position: relative;
+
+    &:before{
+        content: "";
+        width: 5px;
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        background-color: ${colors.themeColor2};
+    }
+`;
+
+export const Wrapper = styled(Cont)`
+    margin-top: 220px;
+
+    color: ${colors.white};
+
+    @media(min-width: 992px){
+        margin-top: 100px;
+    }
+`;
+
+export const Iframe = styled.iframe`
+    width: 100%;
+    height: 100%;
 `;

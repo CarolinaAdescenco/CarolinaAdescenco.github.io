@@ -1,7 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import 'react-image-lightbox/style.css';
-
 // custom typefaces
 import '@fontsource/lato';
 import '@fontsource/lato/100-italic.css';

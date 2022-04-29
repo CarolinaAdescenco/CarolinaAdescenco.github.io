@@ -1,52 +1,48 @@
 import React from 'react';
 import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
-import { Col, Row } from 'react-bootstrap';
 import { Card, Modal } from './styles';
 
 const Lightbox = ({ data }) => {
   const [index, setIndex] = React.useState(0);
   const [show, setShow] = React.useState(false);
 
-  const next = (i) => {
-    if (i === data.length - 1) {
-      console.log('ultimo item');
-    } else {
+  const prev = (i) => {
+    if (i !== 0) {
       setIndex(index - 1);
     }
   };
-  const prev = (i) => {
-    if (i === data[0]) {
-      console.log('primeiro item');
+
+  const next = (i) => {
+    if (i !== (data.length - 1)) {
+      setIndex(index + 1);
     }
   };
 
   return (
     <>
-      <Row>
-        { data.map((item, i) => (
-          <Col key={i}>
-            <Card
-              bg={item}
-              src={item}
-              onClick={() => {
-                setShow(true);
-                setIndex(i);
-              }}
-            />
-          </Col>
-        ))}
-      </Row>
+      { data.map((item, i) => (
+        <Card
+          show={i === 0}
+          key={i}
+          bg={item}
+          src={item}
+          onClick={() => {
+            setShow(true);
+            setIndex(i);
+          }}
+        />
+      ))}
 
       <Modal
         show={show}
         onHide={() => setShow(false)}
-        dialogClassName="modal-90w"
         aria-labelledby="example-custom-modal-styling-title"
+        centered
       >
         <button
-          className="prev"
+          className="next"
           type="button"
-          onClick={() => setIndex(index + 1)}
+          onClick={() => next(index)}
         >
           <BsChevronRight />
         </button>
@@ -54,9 +50,9 @@ const Lightbox = ({ data }) => {
         <img className="img-fluid" src={data[index]} alt="" />
 
         <button
-          className="next"
+          className="prev"
           type="button"
-          onClick={() => next(index)}
+          onClick={() => prev(index)}
         >
           <BsChevronLeft />
         </button>

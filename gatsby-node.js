@@ -10,8 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
               node {
                 id
                 endereco {
-                  lat
-                  lon
+                    raw
                 }
                 bannerDesktop {
                   url
