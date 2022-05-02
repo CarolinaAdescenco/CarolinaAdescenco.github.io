@@ -1,67 +1,69 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import { renderRichText } from 'gatsby-source-contentful/rich-text';
-
 import { Col, Row } from 'react-bootstrap';
 import Layout from '../components/layout';
 
 import {
-  BackgroundImage, Button, Aside, TitlePage, Container,
+  Button, Aside, TitlePage, Container, Subtitle,
 } from '../components/layout/styles';
 
-export const query = graphql`query {
-    allContentfulGeral {
-      edges {
-        node {
-          title
-          description {
-            raw
-          }
-          background {
-            url
-          }
-        }
-      }
-    }
-  }
-`;
+import { sobre } from '../utils/sobre';
 
-const Sobre = ({ data }) => {
-  const { edges } = data.allContentfulGeral;
+const Sobre = () => {
+  const {
+    first, second, third, fourth,
+  } = sobre;
+
   const [element, setElement] = React.useState(0);
   return (
     <Layout>
       <Container>
-        <TitlePage>Sobre a GD8</TitlePage>
+        <TitlePage>{first.title}</TitlePage>
+        <ul>
+          {first.list.map(((item, i) => <li key={i}>{item}</li>))}
+        </ul>
 
-        <Row>
-          <Col className="col-12 col-md-6">
-            <BackgroundImage
-              style={{
-                backgroundImage: `url(${edges[element].node.background?.url}`,
-              }}
-            />
-          </Col>
-          <Col className="col-12 col-md-6">
+        <Row className="mt-5">
+          <Subtitle className="mb-4">{second.title}</Subtitle>
+          { second.paragraph.map((item, index) => (
+            <Col key={index} className="col-12 col-xl-4">
+              <Button
+                type="button"
+                active={index === element}
+                onClick={() => setElement(index)}
+              >
+                {item.title}
+              </Button>
+            </Col>
+          ))}
+          <Aside className="mt-4">
+            <p>{second.paragraph[element].content}</p>
+          </Aside>
+        </Row>
 
-            <Row className="justify-space-between">
-              { edges.map(({ node }, index) => (
-                <Col key={index} className="col-6 col-xl-4">
-                  <Button
-                    type="button"
-                    active={index === element}
-                    onClick={() => setElement(index)}
-                  >
-                    {node.title}
-                  </Button>
-                </Col>
-              ))}
-            </Row>
+        <Row className="mt-5">
+          <Subtitle>{third.title}</Subtitle>
+          {
+              third.paragraph.map((item, i) => (
+                <p key={i}>{item}</p>
+              ))
+          }
+        </Row>
 
-            <Aside>
-              { renderRichText(edges[element].node.description) }
-            </Aside>
-          </Col>
+        <Row className="mt-5">
+          <Subtitle>{fourth.title}</Subtitle>
+          {
+              fourth.paragraph.map((item, i) => (
+                <p key={i}>{item}</p>
+              ))
+          }
+          <ul className="mx-5">
+            {
+                fourth.list.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))
+            }
+          </ul>
         </Row>
       </Container>
 

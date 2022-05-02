@@ -28,10 +28,6 @@ const LancamentoPost = (content) => {
   const lightbox1 = plantas.map((planta) => planta.url);
   const lightbox2 = galeria.map((gal) => gal.url);
 
-  const end = renderRichText(endereco);
-
-  console.log('teste', renderRichText(description));
-
   return (
     <Layout>
       <Figure bgDesktop={bannerDesktop.url} bgMobile={bannerMobile.url}>
@@ -70,6 +66,7 @@ const LancamentoPost = (content) => {
         <Row className="justify-content-around mb-5">
           <Col className="col-12 col-lg-6">
             <Subtitulo>Localização</Subtitulo>
+            {renderRichText(endereco)}
             {/* <iframe src={end} frameBorder="0" title="teste" /> */}
             {/* <Iframe src={renderRichText(endereco)} /> */}
           </Col>

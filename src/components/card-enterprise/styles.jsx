@@ -60,6 +60,7 @@ export const AsideContent = styled.div`
     p{
         font-size: 18px;
         margin: 0 0 8px 0;
+        color: ${colors.black};
     }
 `;
 

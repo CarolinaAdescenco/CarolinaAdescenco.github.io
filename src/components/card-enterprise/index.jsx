@@ -32,7 +32,6 @@ const CardEnterprise = ({ data, type }) => {
           <FloatCol className="col-12 col-lg-5">
             <Aside>
               <h3 className="title">{type}</h3>
-
               <AsideContent>
                 <h3>{node.title}</h3>
                 <p>
@@ -48,7 +47,6 @@ const CardEnterprise = ({ data, type }) => {
             </Aside>
           </FloatCol>
         </Card>
-
       ))}
     </Container>
   );

@@ -9,19 +9,35 @@ export const Container = styled(Cont)`
 
 export const TitlePage = styled.h1`
     color: ${colors.white};
-    font-weight: 700;
+    font-weight: 300;
+    margin-bottom: 24px;
+    padding-left: 24px;
     position: relative;
-    margin: 0 0 48px 0;
 
     &:before{
-        content: '';
-        width: 80px;
-        height: 5px;
-        background: ${colors.themeColor2};
-
+        content: "";
+        width: 5px;
+        height: 100%;
         position: absolute;
-        bottom: -20px;
-        border-radius: 3px;
+        left: 0px;
+        background-color: ${colors.themeColor2};
+    }
+`;
+
+export const Subtitle = styled.h2`
+    color: ${colors.white};
+    font-weight: 300;
+    margin-bottom: 24px;
+    padding-left: 24px !important;
+    position: relative;
+
+    &:before{
+        content: "";
+        width: 5px;
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        background-color: ${colors.themeColor3};
     }
 `;
 

@@ -8,7 +8,6 @@ import CardEnterprise from '../components/card-enterprise';
 
 export const query = graphql`query {
 
-
     allContentfulLancamentos {
         edges {
           node {

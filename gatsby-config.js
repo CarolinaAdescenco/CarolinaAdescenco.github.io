@@ -1,4 +1,9 @@
 module.exports = {
+  siteMetadata: {
+    title: 'GD8 Construtora',
+    description: 'GD8 Construtora',
+    url: 'https://karamellosorvetes.com.br',
+  },
   plugins: [
     {
       resolve: 'gatsby-source-contentful',

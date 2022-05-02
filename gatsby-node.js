@@ -2,9 +2,21 @@ const path = require('path');
 
 exports.createPages = async ({ graphql, actions }) => {
   const lancamentoPost = path.resolve('src/templates/lancamento/index.jsx');
+  const portifolioPost = path.resolve('src/templates/portifolio/index.jsx');
 
   const { data } = await graphql(`
       query {
+        allContentfulPortifolio {
+            edges {
+              node {
+                slug
+                title
+                description {
+                  raw
+                }
+              }
+            }
+        }
         allContentfulLancamentos {
             edges {
               node {
@@ -52,6 +64,14 @@ exports.createPages = async ({ graphql, actions }) => {
     actions.createPage({
       path: `lancamentos/${edge.node.slug}`,
       component: lancamentoPost,
+      context: edge.node,
+    });
+  });
+
+  data.allContentfulPortifolio.edges.forEach((edge) => {
+    actions.createPage({
+      path: `portifolio/${edge.node.slug}`,
+      component: portifolioPost,
       context: edge.node,
     });
   });

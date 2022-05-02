@@ -15,8 +15,8 @@ const navLinks = [
     text: 'Lançamentos',
   },
   {
-    path: '/portfolio',
-    text: 'Portfólio',
+    path: '/portifolio',
+    text: 'Portifólio',
   },
   {
     path: '/midia',

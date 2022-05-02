@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import { Col, Row } from 'react-bootstrap';
 import Layout from '../components/layout';
 import {
-  Button, Container, Iframe, TitlePage,
+  Button, Container, Iframe, P, TitlePage,
 } from '../components/layout/styles';
 
 import { Input, InputPhone, Select } from '../components/form';
@@ -66,6 +66,8 @@ const Contato = ({ data }) => {
             <Iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.3814109107584!2d-46.708610684342744!3d-23.554741267234537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce57b59b835283%3A0xf6f9722e2f2125b1!2sAv.%20Pedroso%20de%20Morais%2C%202580%20-%20Pinheiros%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2005420-003!5e0!3m2!1spt-BR!2sbr!4v1650884810934!5m2!1spt-BR!2sbr" allowFullScreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" />
           </Col>
           <Col className="col-12 col-lg-6 order-1 order-lg-2">
+            <p>Deixe aqui suas dúvidas ou comentários.</p>
+            <p className="mb-5">Entraremos em contato o mais breve possível.</p>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Input
                 type="text"
