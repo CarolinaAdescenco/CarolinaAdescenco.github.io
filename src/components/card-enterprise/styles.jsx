@@ -35,6 +35,14 @@ export const Aside = styled.aside`
     -webkit-box-shadow: 6px 12px 25px -5px rgba(0,0,0,0.67);
     box-shadow: 6px 12px 25px -5px rgba(0,0,0,0.67);
 
+    transition: .2s all;
+
+    &:hover{
+        background: ${colors.white};
+        transform: translateY(-5px);
+
+    }
+
     .title{
         color: ${colors.black};
         text-transform: uppercase;

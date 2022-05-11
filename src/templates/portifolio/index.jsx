@@ -7,14 +7,18 @@ import {
   Button, Figure, Subtitulo, Wrapper,
 } from './styles';
 import Lightbox from '../../components/lightbox';
+import { Iframe } from '../../components/layout/styles';
 
 const PortifolioPost = (content) => {
   const {
+    slug,
     title,
     description,
+    endereco,
+    galeria,
   } = content.pageContext;
 
-  //   const lightbox1 = galeria.map((planta) => planta.url);
+  const lightbox1 = galeria !== null ? galeria.map((planta) => planta.url) : [];
 
   return (
     <Layout>
@@ -44,6 +48,21 @@ const PortifolioPost = (content) => {
             {/* <Lightbox data={lightbox1} /> */}
           </Col>
         </Row>
+
+        {
+           (endereco?.lat && endereco?.lon) && (
+           <Row className="justify-content-around mb-5">
+             <Col className="col-12">
+               <Subtitulo>Localização</Subtitulo>
+               <Iframe
+                 title={endereco.lat}
+                 scrolling="no"
+                 src={`https://maps.google.com/maps?q=${endereco.lat},${endereco.lon}&hl=pt-br&z=14&amp;&output=embed`}
+               />
+             </Col>
+           </Row>
+           )
+        }
 
       </Wrapper>
     </Layout>

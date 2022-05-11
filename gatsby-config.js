@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'GD8 Construtora',
-    description: 'GD8 Construtora',
-    url: 'https://karamellosorvetes.com.br',
+    title: 'GD8 Incorporadora',
+    description: 'GD8 Incorporadora',
+    url: 'gd8.com.br',
   },
   plugins: [
     {
@@ -34,21 +34,15 @@ module.exports = {
         path: `${__dirname}/content/assets`,
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-image',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Gatsby Starter WordPress Blog',
-        short_name: 'GatsbyJS & WP',
-        start_url: '/',
-        background_color: '#ffffff',
-        theme_color: '#232063',
-        display: 'minimal-ui',
-        icon: 'content/assets/gatsby-icon.png',
+        icon: 'src/assets/favicon.png',
       },
     },
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
   ],
 };

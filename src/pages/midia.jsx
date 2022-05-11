@@ -1,54 +1,51 @@
 import * as React from 'react';
-import { graphql } from 'gatsby';
-import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { Col, Row } from 'react-bootstrap';
 
+import ImgPremio from '../assets/premio-gd8-west-whales.jpeg';
 import Layout from '../components/layout';
 
 import {
-  BackgroundImage, Aside, Container, TitlePage, DotButton, DotColumn, Figure, P,
+  BackgroundImage, Aside, Container, TitlePage, DotButton, DotColumn, Figure, Subcontent,
 } from '../components/layout/styles';
+
+import { midia } from '../utils/midia';
 
 const Midia = () => {
 //   const { edges } = data.allContentfulGeral;
   const [element, setElement] = React.useState(0);
+
+  const { first, second } = midia;
+
   return (
     <Layout>
       <Container>
-        <TitlePage>Prêmio</TitlePage>
+        <TitlePage>{first.title}</TitlePage>
+        <Subcontent>
+          {first.paragraph.map((item, i) => (
+            <p key={i}>{item}</p>
+          ))}
+        </Subcontent>
 
-        <Row className="mb-4">
-          <p>Esse é o nosso Hall da fama particular.</p>
-          <p>
-            Mantemos sempre com muito orgulho nossas premiações em voga,
-            para jamais esquecer do compromisso que fazemos com a qualidade
-            e experiência que proporcionamos aos nossos clientes.
-          </p>
-        </Row>
-
-        <Figure>
+        <Figure className="mt-5">
           <img
             className="img-fluid"
-            src="https://gd8.com.br/imagens-gd8/premio-gd8-west-whales.jpeg"
+            src={ImgPremio}
             alt="Prêmio Master Imobiliário GD8 - West Whales"
             title="Prêmio Master Imobiliário GD8 - West Whales"
           />
 
           <figcaption>West Whales</figcaption>
         </Figure>
+
       </Container>
 
       <Container>
-        <TitlePage>GD8 na Mídia</TitlePage>
-
-        <Row className="mb-4">
-          <p>
-            Nossa preocupação com qualidade e experiência, assim como a
-            responsabilidade social e ambiental, nos proporcionam convites
-            para compartilhar nossa opinião e conhecimento com o mercado.
-          </p>
-          <p>Veja algumas matérias aqui:</p>
-        </Row>
+        <TitlePage>{second.title}</TitlePage>
+        <Subcontent>
+          {second.paragraph.map((item, i) => (
+            <p key={i}>{item}</p>
+          ))}
+        </Subcontent>
 
         <Row>
           <Col className="col-12 col-md-5">

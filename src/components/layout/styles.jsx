@@ -41,6 +41,10 @@ export const Subtitle = styled.h2`
     }
 `;
 
+export const Subcontent = styled.div`
+    margin-left: 26px;
+`;
+
 export const BackgroundImage = styled.div`
     height: 300px;
     background-size: cover;
@@ -93,7 +97,7 @@ export const DotButton = styled.button`
     }
 `;
 
-export const Aside = styled.aside`
+export const Aside = styled.a`
     color: ${colors.white};
 
     p{
@@ -168,4 +172,8 @@ export const WhatsAppButton = styled.a`
 export const Iframe = styled.iframe`
     width: 100%;
     height: 100%;
+
+    @media(min-width: 992px){
+        min-height: 300px;
+    }
 `;

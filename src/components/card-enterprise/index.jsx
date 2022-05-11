@@ -13,7 +13,6 @@ const CardEnterprise = ({ data, type }) => {
   const { edges } = data;
 
   return (
-
     <Container>
       {edges.map(({ node }) => (
         <Card

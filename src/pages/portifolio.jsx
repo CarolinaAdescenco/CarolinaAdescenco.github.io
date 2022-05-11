@@ -1,25 +1,36 @@
-import { graphql, Link } from 'gatsby';
 import * as React from 'react';
+import { graphql, Link } from 'gatsby';
+import styled from 'styled-components';
+import { Row } from 'react-bootstrap';
+import { IoIosArrowRoundForward } from 'react-icons/io';
 
-import { Col, Row } from 'react-bootstrap';
 import Layout from '../components/layout';
 
+import { TitlePage, Container, Subcontent } from '../components/layout/styles';
+
 import {
-  TitlePage, Container, Subtitle,
-} from '../components/layout/styles';
+  Aside,
+  AsideContent,
+} from '../components/card-enterprise/styles';
 
 import { portifolio } from '../utils/portifolio';
 
-export const query = graphql`query {
-    allContentfulPortifolio {
-        edges {
-            node {
-                slug
-                title
+export const query = graphql`
+    query {
+        allContentfulPortifolio {
+            edges {
+                node {
+                    slug
+                    title
+                }
             }
         }
     }
-}`;
+`;
+
+const Card = styled(Link)`
+    text-decoration: none;
+`;
 
 const Portifolio = ({ data }) => {
   const { edges } = data.allContentfulPortifolio;
@@ -27,19 +38,30 @@ const Portifolio = ({ data }) => {
   return (
     <Layout>
       <Container>
-        <TitlePage>Portifólio</TitlePage>
-        {
-                portifolio.paragraph.map((item, i) => (
-                  <p key={i}>{item}</p>
-                ))
-            }
+        <TitlePage>{portifolio.title}</TitlePage>
+        <Subcontent>
+          {portifolio.paragraph.map((item, i) => (
+            <p key={i}>{item}</p>
+          ))}
+        </Subcontent>
 
-        {
-                edges.map(({ node }, i) => (
-                  <Link key={i} to={node.slug}>{node.title}</Link>
-                ))
-            }
-
+        <Row className="mt-5">
+          {edges.map(({ node }, i) => (
+            <Card
+              to={node.slug}
+              key={i}
+              className="col-12 col-lg-4 mb-4"
+            >
+              <Aside>
+                <AsideContent>
+                  <h3>{node.title}</h3>
+                  saiba mais
+                  <IoIosArrowRoundForward />
+                </AsideContent>
+              </Aside>
+            </Card>
+          ))}
+        </Row>
       </Container>
     </Layout>
   );

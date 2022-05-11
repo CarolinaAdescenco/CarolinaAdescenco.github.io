@@ -1,4 +1,5 @@
 export const portifolio = {
+  title: 'Portifólio',
   paragraph: [
     'Nossas obras de arte estão aqui. Tão lindas por fora, quanto por dentro.',
     'O melhor que podemos oferecer, em harmonia com o que a natureza oferece.',

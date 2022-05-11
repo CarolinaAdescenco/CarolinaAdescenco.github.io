@@ -1,12 +1,15 @@
 import React from 'react';
-import { Navbar, Container } from 'react-bootstrap';
+import {
+  Navbar, Container, Row, Col,
+} from 'react-bootstrap';
 import { AiOutlineInstagram, AiOutlineYoutube } from 'react-icons/ai';
 import { ImFacebook, ImTwitter, ImWhatsapp } from 'react-icons/im';
 
 import { data } from '../../utils/data';
+import LogoIMG from '../../assets/gd8-incorporadora.png';
 
 import {
-  NavbarComponent, NavLink, NavbarCollapse, NavComponent, HeaderComponent, SocialContainer,
+  NavbarComponent, NavLink, NavbarCollapse, NavComponent, HeaderComponent, SocialContainer, Logo,
 } from './styles';
 
 const navLinks = [
@@ -36,7 +39,9 @@ const Header = () => (
   <HeaderComponent>
     <NavbarComponent variant="dark" expand="lg" sticky>
       <Container>
-        <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+        <Logo to="/">
+          <img src={LogoIMG} alt="GD8" title="GD8" className="img-fluid" />
+        </Logo>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <NavbarCollapse id="basic-navbar-nav">
           <NavComponent>
@@ -51,9 +56,7 @@ const Header = () => (
                   </NavLink>
                 ))
             }
-
             <Social />
-
           </NavComponent>
         </NavbarCollapse>
       </Container>

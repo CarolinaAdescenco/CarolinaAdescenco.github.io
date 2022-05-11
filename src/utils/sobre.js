@@ -2,46 +2,69 @@ export const sobre = {
   first: {
     title: 'O grupo GD8',
     list: [
-      'GD8 Incorporadora',
-      'GD8 Construtora',
-      'GD8 Instaladora',
+      {
+        title: 'GD8 Incorporadora',
+        icon: 'building',
+      },
+      {
+        title: 'GD8 Construtora',
+        icon: 'home',
+      },
+      {
+        title: 'GD8 Instaladora',
+        icon: 'construct',
+      },
     ],
   },
+  //   second: {
+  //     title: '8 pilares da nossa filosofia de trabalho, na qual tratamos nossos clientes e parceiros',
+  //     paragraph: [
+  //       {
+  //         title: 'Honestidade',
+  //         content: 'Seja na prática ou na comunicação, prezamos pela transparência e verdade, sem rodeios.',
+  //       },
+  //       {
+  //         title: 'Integridade',
+  //         content: 'Somos coerentes entre o que dizemos e fazemos, e levamos como lema a coragem para aceitar e lutar pelo que é direito e rejeitar firmemente o que é errado.',
+  //       },
+  //       {
+  //         title: 'Justiça',
+  //         content: 'Sendo imparciais nas nossas negociações, tratando todos os nossos stakeholders com respeito, igualdade e consideração.',
+  //       },
+  //       {
+  //         title: 'Responsabilidade',
+  //         content: 'Promovendo um trabalho em equipe que identifique e corrija erros de forma eficiente e imediata, rejeitando comportamentos que vão contra essa conduta.',
+  //       },
+  //       {
+  //         title: 'Consideração pelos outros.',
+  //         content: ' Respeitando a dignidade e segurança de todos, ouvindo suas opiniões, permanecendo positivos nas circunstâncias e garantindo que ninguém seja colocado em posição de constrangimento.',
+  //       },
+  //       {
+  //         title: 'Obcecados por excelência.',
+  //         content: 'Assegurando que todos os hábitos contribuam com a melhor experiência e melhores produtos para os nossos clientes.',
+  //       },
+  //       {
+  //         title: 'Realistas',
+  //         content: 'Estabeleça compromissos e os honre, sendo realista nas negociações dentro e fora da empresa.',
+  //       },
+  //       {
+  //         title: 'Cidadãos',
+  //         content: 'Respeitando todas as leis, regras e regulamentos em prol da segurança e bem estar de todos. Respeitando o impacto ao meio ambiente e fazendo a diferença na nossa comunidade e no mundo.',
+  //       },
+  //     ],
+  //   },
+
   second: {
     title: '8 pilares da nossa filosofia de trabalho, na qual tratamos nossos clientes e parceiros',
-    paragraph: [
-      {
-        title: 'Honestidade',
-        content: 'Seja na prática ou na comunicação, prezamos pela transparência e verdade, sem rodeios.',
-      },
-      {
-        title: 'Integridade',
-        content: 'Somos coerentes entre o que dizemos e fazemos, e levamos como lema a coragem para aceitar e lutar pelo que é direito e rejeitar firmemente o que é errado.',
-      },
-      {
-        title: 'Justiça',
-        content: 'Sendo imparciais nas nossas negociações, tratando todos os nossos stakeholders com respeito, igualdade e consideração.',
-      },
-      {
-        title: 'Responsabilidade',
-        content: 'Promovendo um trabalho em equipe que identifique e corrija erros de forma eficiente e imediata, rejeitando comportamentos que vão contra essa conduta.',
-      },
-      {
-        title: 'Consideração pelos outros.',
-        content: ' Respeitando a dignidade e segurança de todos, ouvindo suas opiniões, permanecendo positivos nas circunstâncias e garantindo que ninguém seja colocado em posição de constrangimento.',
-      },
-      {
-        title: 'Obcecados por excelência.',
-        content: 'Assegurando que todos os hábitos contribuam com a melhor experiência e melhores produtos para os nossos clientes.',
-      },
-      {
-        title: 'Realistas',
-        content: 'Estabeleça compromissos e os honre, sendo realista nas negociações dentro e fora da empresa.',
-      },
-      {
-        title: 'Cidadãos',
-        content: 'Respeitando todas as leis, regras e regulamentos em prol da segurança e bem estar de todos. Respeitando o impacto ao meio ambiente e fazendo a diferença na nossa comunidade e no mundo.',
-      },
+    list: [
+      'Honestidade: Seja na prática ou na comunicação, prezamos pela transparência e verdade, sem rodeios.',
+      'Integridade: Somos coerentes entre o que dizemos e fazemos, e levamos como lema a coragem para aceitar e lutar pelo que é direito e rejeitar firmemente o que é errado.',
+      'Justiça: Sendo imparciais nas nossas negociações, tratando todos os nossos stakeholders com respeito, igualdade e consideração.',
+      'Responsabilidade: Promovendo um trabalho em equipe que identifique e corrija erros de forma eficiente e imediata, rejeitando comportamentos que vão contra essa conduta.',
+      'Consideração pelos outros: Respeitando a dignidade e segurança de todos, ouvindo suas opiniões, permanecendo positivos nas circunstâncias e garantindo que ninguém seja colocado em posição de constrangimento.',
+      'Obcecados por excelência: Assegurando que todos os hábitos contribuam com a melhor experiência e melhores produtos para os nossos clientes.',
+      'Realistas: Estabeleça compromissos e os honre, sendo realista nas negociações dentro e fora da empresa.',
+      'Cidadãos: Respeitando todas as leis, regras e regulamentos em prol da segurança e bem estar de todos. Respeitando o impacto ao meio ambiente e fazendo a diferença na nossa comunidade e no mundo.',
     ],
   },
   third: {

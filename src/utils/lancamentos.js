@@ -1,4 +1,5 @@
 export const lancamentos = {
+  title: 'Lançamentos',
   first: [
     'Na vanguarda da junção entre sofisticação, beleza e funcionalidade.',
     'Encontre o ambiente perfeito para celebrar a vida, suas conquistas e momentos que ficarão na memória.',

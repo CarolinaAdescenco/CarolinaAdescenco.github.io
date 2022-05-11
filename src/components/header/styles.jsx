@@ -45,10 +45,22 @@ export const NavComponent = styled(Nav)`
     }
 `;
 
+export const Logo = styled(Link)`
+    width: 150px;
+    text-decoration: none;
+
+    @media(min-width: 576px){
+        width: 175px;
+    }
+`;
+
 export const NavLink = styled(Link)`
     color: ${colors.white};
     text-decoration: none;
     text-align: center;
+
+    transition: all .2s;
+
 
     @media(max-width: 991px){
         width: 300px;
@@ -69,7 +81,7 @@ export const NavLink = styled(Link)`
         display: flex !important;
         align-items: center;
         border-bottom: 3px solid transparent;
-        padding: 0 20px !important;
+        padding: 16px 20px !important;
 
         &.active {
             background: ${colors.transparentWhite};

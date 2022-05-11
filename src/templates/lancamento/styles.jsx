@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Container as Cont } from 'react-bootstrap';
+import { Link } from 'gatsby';
 
 import { colors } from '../../utils/colors';
 
@@ -86,12 +87,14 @@ export const Figure = styled.figure`
 
 `;
 
-export const Button = styled.button`
+export const Button = styled(Link)`
     border: none;
     border-radius: 0;
-    width: 200px;
-    padding: 16px 0;
+    padding: 16px 48px;
     margin:  0 0 16px 0;
+    text-decoration: none;
+    display: flex;
+
 
     font-size: 18px;
     color: ${colors.white};
@@ -99,8 +102,10 @@ export const Button = styled.button`
     white-space: nowrap;
 
     background: ${colors.themeColor2};
+    transition: .2s all;
 
     &:hover{
+        color: ${colors.white};
         background: ${colors.themeColor3};
     }
 `;

@@ -11,22 +11,19 @@ import { Iframe } from '../../components/layout/styles';
 
 const LancamentoPost = (content) => {
   const {
-    id,
     endereco,
     bannerDesktop,
     bannerMobile,
     slug,
     title,
-    miniDescricao1,
-    miniDescricao2,
     fichaTecnica,
     description,
     plantas,
     galeria,
   } = content.pageContext;
 
-  const lightbox1 = plantas.map((planta) => planta.url);
-  const lightbox2 = galeria.map((gal) => gal.url);
+  const lightbox1 = plantas !== null ? plantas.map((planta) => planta.url) : [];
+  const lightbox2 = galeria !== null ? galeria.map((gal) => gal.url) : [];
 
   return (
     <Layout>
@@ -35,9 +32,15 @@ const LancamentoPost = (content) => {
           <Row className="justify-content-center box-principal">
             <Col className="col-12 col-lg-6 box-titulo">
               <h1>{title}</h1>
-              <Button>Saber mais</Button>
+              <Button to="/contato">Saber mais</Button>
             </Col>
-            <Col className="col-10 col-lg-5 box-black">{renderRichText(fichaTecnica)}</Col>
+
+            {
+                fichaTecnica && (
+                <Col className="col-10 col-lg-5 box-black">{renderRichText(fichaTecnica)}</Col>
+                )
+            }
+
           </Row>
         </Container>
       </Figure>
@@ -45,32 +48,52 @@ const LancamentoPost = (content) => {
       <Wrapper>
         {!!description && (
         <Row className="justify-content-start mb-5">
-          <Col className="col-12 col-lg-8">
+          <Col className="col-12 col-lg-10">
             <Subtitulo>+ detalhes</Subtitulo>
             {renderRichText(description)}
           </Col>
         </Row>
         )}
 
-        <Row className="justify-content-around mb-5">
-          <Col className="col-12 col-lg-6">
-            <Subtitulo>Plantas</Subtitulo>
-            <Lightbox data={lightbox1} />
-          </Col>
-          <Col className="col-12 col-lg-6">
-            <Subtitulo>Galeria de Imagens</Subtitulo>
-            <Lightbox data={lightbox2} />
-          </Col>
-        </Row>
+        {
+            (plantas || galeria) && (
+            <Row className="justify-content-around mb-5">
+              {
+                    plantas && (
+                    <Col className="col-12 col-lg-6">
+                      <Subtitulo>Plantas</Subtitulo>
+                      <Lightbox data={lightbox1} />
+                    </Col>
+                    )
+                }
 
-        <Row className="justify-content-around mb-5">
-          <Col className="col-12 col-lg-6">
-            <Subtitulo>Localização</Subtitulo>
-            {renderRichText(endereco)}
-            {/* <iframe src={end} frameBorder="0" title="teste" /> */}
-            {/* <Iframe src={renderRichText(endereco)} /> */}
-          </Col>
-        </Row>
+              {
+                    galeria && (
+                    <Col className="col-12 col-lg-6 mt-5 mt-lg-0">
+                      <Subtitulo>Galeria de Imagens</Subtitulo>
+                      <Lightbox data={lightbox2} />
+                    </Col>
+                    )
+                }
+            </Row>
+            )
+        }
+
+        {
+           (endereco?.lat && endereco?.lon) && (
+           <Row className="justify-content-around mb-5">
+             <Col className="col-12">
+               <Subtitulo>Localização</Subtitulo>
+               <Iframe
+                 title={slug}
+                 scrolling="no"
+                 src={`https://maps.google.com/maps?q=${endereco.lat},${endereco.lon}&hl=pt-br&z=14&amp;&output=embed`}
+               />
+             </Col>
+           </Row>
+           )
+        }
+
       </Wrapper>
     </Layout>
   );

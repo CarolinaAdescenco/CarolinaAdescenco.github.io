@@ -1,86 +1,92 @@
 import React from 'react';
+import styled from 'styled-components';
 import { graphql, Link } from 'gatsby';
 import { Row } from 'react-bootstrap';
-import styled from 'styled-components';
-
 import { IoIosArrowRoundForward } from 'react-icons/io';
+
 import Layout from '../components/layout';
-import { Container, TitlePage } from '../components/layout/styles';
+import { Container, TitlePage, Subcontent } from '../components/layout/styles';
 
 import { lancamentos } from '../utils/lancamentos';
 
 import {
-  Action, Aside, AsideContent, Separator,
+  Aside,
+  AsideContent,
+  Separator,
 } from '../components/card-enterprise/styles';
 
-export const query = graphql`query {
-    allContentfulLancamentos {
-        edges {
-          node {
-            id
-            title
-            slug
-            bannerDesktop {
-              url
-              title
-              description
+const Card = styled(Link)`
+    text-decoration: none;
+`;
+
+export const query = graphql`
+    query {
+        allContentfulLancamentos {
+            edges {
+                node {
+                    id
+                    title
+                    slug
+                    bannerDesktop {
+                        url
+                        title
+                        description
+                    }
+                    bannerMobile {
+                        url
+                        title
+                        description
+                    }
+                    miniDescricao1
+                    miniDescricao2
+                }
             }
-            bannerMobile {
-              url
-              title
-              description
-            }
-            miniDescricao1
-            miniDescricao2
-          }
         }
-      }
-}`;
+    }
+`;
 
 const LancamentosPage = ({ data }) => {
   const { edges } = data.allContentfulLancamentos;
+  const { title, first, second } = lancamentos;
 
   return (
     <Layout>
       <Container>
-        <TitlePage>Lançamentos</TitlePage>
+        <TitlePage>{title}</TitlePage>
 
-        <Row>
-          {
-                  lancamentos.first.map((item, i) => (
-                    <p key={i}>{item}</p>
-                  ))
-              }
-        </Row>
-        <Row>
-          {
-                  lancamentos.second.map((item, i) => (
-                    <p key={i}>{item}</p>
-                  ))
-              }
-        </Row>
+        <Subcontent>
+          {first.map((item, i) => (
+            <p key={i}>{item}</p>
+          ))}
+        </Subcontent>
 
-        <Row className="mt-4">
-          {
-              edges.map(({ node }, i) => (
-                <Link to={node.slug} key={i} className="col-12 col-md-4">
-                  <Aside>
-                    <AsideContent>
-                      <h3>{node.title}</h3>
-                      <p>
-                        {node.miniDescricao1}
-                        <Separator />
-                        {node.miniDescricao2}
-                      </p>
-                      {/* <Action> */}
-                      saiba mais
-                      <IoIosArrowRoundForward />
-                      {/* </Action>s */}
-                    </AsideContent>
-                  </Aside>
-                </Link>
-              ))
-            }
+        <Subcontent>
+          {second.map((item, i) => (
+            <p key={i}>{item}</p>
+          ))}
+        </Subcontent>
+
+        <Row className="mt-5">
+          {edges.map(({ node }, i) => (
+            <Card
+              to={node.slug}
+              key={i}
+              className="col-12 col-lg-4 mb-4"
+            >
+              <Aside>
+                <AsideContent>
+                  <h3>{node.title}</h3>
+                  <p>
+                    {node.miniDescricao1}
+                    <Separator />
+                    {node.miniDescricao2}
+                  </p>
+                  saiba mais
+                  <IoIosArrowRoundForward />
+                </AsideContent>
+              </Aside>
+            </Card>
+          ))}
         </Row>
       </Container>
     </Layout>
