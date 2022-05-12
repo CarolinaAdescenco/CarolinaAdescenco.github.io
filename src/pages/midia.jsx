@@ -17,7 +17,7 @@ const Midia = () => {
   const { first, second } = midia;
 
   return (
-    <Layout>
+    <Layout titlePage="Mídia">
       <Container>
         <TitlePage>{first.title}</TitlePage>
         <Subcontent>

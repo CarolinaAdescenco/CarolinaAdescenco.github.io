@@ -66,7 +66,7 @@ const Sobre = () => {
   }
 
   return (
-    <Layout>
+    <Layout titlePage="Sobre">
       <Container>
         <TitlePage>{first.title}</TitlePage>
         <CardList>

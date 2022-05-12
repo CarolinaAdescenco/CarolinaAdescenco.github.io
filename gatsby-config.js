@@ -37,7 +37,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: 'src/assets/favicon.png',
+        name: 'GD8 Incorporadora',
+        short_name: 'GD8',
+        start_url: '/',
+        background_color: '#232063',
+        theme_color: '#232063',
+        display: 'standalone',
+        icon: 'src/images/icon.png',
       },
     },
     'gatsby-transformer-sharp',

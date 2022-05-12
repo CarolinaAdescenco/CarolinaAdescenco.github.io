@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 const Seo = ({
-  description = '', lang = 'pt-br', meta = [], title, image,
+  description = '', lang = 'pt-br', meta = [], title, image, titlePage = '',
 }) => {
   const { site } = useStaticQuery(
     graphql`
@@ -19,7 +19,7 @@ const Seo = ({
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title;
+  const defaultTitle = `${site.siteMetadata?.title} | ${titlePage}`;
 
   return (
     <Helmet

@@ -57,7 +57,7 @@ const Contato = ({ data }) => {
 
   return (
     <Layout>
-      <Container>
+      <Container titlePage="Contato">
 
         <TitlePage>Contato</TitlePage>
 

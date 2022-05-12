@@ -36,7 +36,7 @@ const Portifolio = ({ data }) => {
   const { edges } = data.allContentfulPortifolio;
 
   return (
-    <Layout>
+    <Layout titlePage={portifolio.title}>
       <Container>
         <TitlePage>{portifolio.title}</TitlePage>
         <Subcontent>

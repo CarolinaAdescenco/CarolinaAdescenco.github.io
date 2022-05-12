@@ -38,7 +38,7 @@ export const query = graphql`
     }
 `;
 
-export const Link = styled(link)`
+const Link = styled(link)`
     border: none;
     border-radius: 0;
     padding: 16px 48px;
@@ -65,7 +65,7 @@ const Index = ({ data }) => {
   const { first, second } = home;
 
   return (
-    <Layout>
+    <Layout titlePage="Home">
       <Slider data={data.allContentfulLancamentos} />
       <Container>
         <Subtitle>{first.title}</Subtitle>

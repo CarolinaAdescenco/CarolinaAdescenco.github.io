@@ -9,15 +9,17 @@ import Modal from '../modal';
 
 import { data } from '../../utils/data';
 
-import { Container, WhatsAppButton } from './styles';
+import { WhatsAppButton } from './styles';
 
-const Layout = ({ children }) => {
+const Layout = ({
+  children, description, meta, title, titlePage,
+}) => {
   const { social } = data;
 
   return (
     <>
       <Header />
-      <Seo />
+      <Seo description={description} meta={meta} title={title} titlePage={titlePage} />
       <section>
         {children}
       </section>

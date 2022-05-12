@@ -50,7 +50,7 @@ const LancamentosPage = ({ data }) => {
   const { title, first, second } = lancamentos;
 
   return (
-    <Layout>
+    <Layout titlePage={title}>
       <Container>
         <TitlePage>{title}</TitlePage>
 

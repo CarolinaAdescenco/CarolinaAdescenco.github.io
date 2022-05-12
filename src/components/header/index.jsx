@@ -14,6 +14,10 @@ import {
 
 const navLinks = [
   {
+    path: '/',
+    text: 'Home',
+  },
+  {
     path: '/lancamentos',
     text: 'Lançamentos',
   },
