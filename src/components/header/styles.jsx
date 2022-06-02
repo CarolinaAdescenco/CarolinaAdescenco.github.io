@@ -12,7 +12,7 @@ export const HeaderComponent = styled.header`
 `;
 
 export const NavbarComponent = styled(Navbar)`
-    background: ${colors.themeColor};
+    background: ${colors.transparentBlack};
     color: ${colors.primary};
 
     @media (min-width: 992px) {

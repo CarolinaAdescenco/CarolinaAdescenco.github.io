@@ -5,6 +5,7 @@ module.exports = {
     url: 'gd8.com.br',
   },
   plugins: [
+    'gatsby-plugin-transition-link',
     {
       resolve: 'gatsby-source-contentful',
       options: {
