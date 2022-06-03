@@ -1,6 +1,5 @@
 import React from 'react';
 import CookieConsent from 'react-cookie-consent';
-import { ImWhatsapp } from 'react-icons/im';
 
 import Header from '../header';
 import Footer from '../footer';
@@ -37,13 +36,6 @@ const Layout = ({
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum atque saepe explicabo quam, dolore laborum voluptas tempore, nisi sint necessitatibus nemo. Asperiores recusandae at facere neque! Deleniti, dolores nisi. A.
         </Modal>
       </CookieConsent>
-
-      <WhatsAppButton
-        href={social[0].path}
-        target="_blank"
-      >
-        <ImWhatsapp />
-      </WhatsAppButton>
     </>
   );
 };

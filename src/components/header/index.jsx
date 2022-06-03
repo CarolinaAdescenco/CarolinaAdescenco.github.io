@@ -1,174 +1,276 @@
-import React from 'react';
-import {
-  Navbar, Container, Row, Col,
-} from 'react-bootstrap';
-import { AiOutlineInstagram, AiOutlineYoutube } from 'react-icons/ai';
-import { ImFacebook, ImTwitter, ImWhatsapp } from 'react-icons/im';
-import styled, { keyframes } from 'styled-components';
-import { bounce } from 'react-animations';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import React from "react"
+import { AiOutlineInstagram, AiOutlineYoutube } from "react-icons/ai"
+import { ImFacebook, ImTwitter, ImWhatsapp } from "react-icons/im"
+import styled, { css, keyframes } from "styled-components"
 
-import { data } from '../../utils/data';
-import LogoIMG from '../../assets/gd8-incorporadora.png';
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+
+import { data } from "../../utils/data"
+import LogoIMG from "../../assets/gd8-incorporadora.png"
 
 import {
-  NavbarComponent,
-  NavbarCollapse,
-  NavComponent,
-  HeaderComponent,
-  SocialContainer,
-  Logo,
-} from './styles';
-import { colors } from '../../utils/colors';
+    NavbarComponent,
+    NavbarCollapse,
+    NavComponent,
+    HeaderComponent,
+    SocialContainer,
+    Logo,
+} from "./styles"
+import { colors } from "../../utils/colors"
 
-const bounceAnimation = keyframes`${bounce}`;
 
-const Card = styled(AniLink)`
+const slideMenu = keyframes`
+      from {
+      -webkit-transform: scaleX(0);
+              transform: scaleX(0);
+    }
+    to {
+      -webkit-transform: scaleX(1);
+              transform: scaleX(1);
+    }
+  `
+
+const menuItemAnim = keyframes`
+  from {
+    -webkit-transform: translateY(30%);
+            transform: translateY(30%);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+  `
+
+const HeaderWrapper = styled.header`
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+`
 
-    text-decoration: none;
-    padding: 24px 16px;
-    margin: 8px;
-    animation: 1s ${bounceAnimation};
+const Button = styled.button`
+    margin-left: auto;
+    border: none;
+    background: transparent;
+    z-index: 999;
 
-    &.box-p {
-        width: 200px;
+    #icon {
+        width: 175px;
+        height: 125px;
+        cursor: pointer;
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
-    &.box-m {
-        width: 250px;
+
+    path {
+        fill: none;
+        -webkit-transition: stroke-dashoffset 0.5s
+                cubic-bezier(0.25, -0.25, 0.75, 1.25),
+            stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
+        -moz-transition: stroke-dashoffset 0.5s
+                cubic-bezier(0.25, -0.25, 0.75, 1.25),
+            stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
+        -o-transition: stroke-dashoffset 0.5s
+                cubic-bezier(0.25, -0.25, 0.75, 1.25),
+            stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
+        -ms-transition: stroke-dashoffset 0.5s
+                cubic-bezier(0.25, -0.25, 0.75, 1.25),
+            stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
+        transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25),
+            stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
+        stroke-width: 40px;
+        stroke-linecap: round;
+        stroke: ${colors.themeColor2};
+        stroke-dashoffset: 0px;
     }
-    &.box-g {
-        width: 300px;
+    path#top,
+    path#bottom {
+        stroke-dasharray: 240px 950px;
+    }
+    path#middle {
+        stroke-dasharray: 240px 240px;
     }
 
-    color: ${colors.white};
-    text-decoration: none;
-    text-align: center;
+    ${props => props.show && css`
+        path#top,
+        path#bottom {
+            stroke-dashoffset: -650px;
+            stroke-dashoffset: -650px;
+        }
+        path#middle {
+            stroke-dashoffset: -115px;
+            stroke-dasharray: 1px 220px;
+        }
+    `}
+`
 
-    transition: all 0.2s;
 
-    @media (max-width: 991px) {
-        width: 300px;
-        margin: 0 auto;
-        padding: 16px 0;
 
-        &.active {
-            background: ${colors.transparentWhite};
+const Nav = styled.nav`
+    position: fixed;
+    background:black;
+    padding: 2em;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    transform: scaleX(0);
+    transform-origin: right;
+
+    ul {
+        list-style-type: none;
+        margin: 20% auto 0 auto ;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+
+        li {
+            opacity: 0;
+            text-align: center;
+            margin: 16px 0;
+            padding: 8px;
+        }
+
+        a {
+            color: white;
+            font-weight: 100;
+            font-size: 1.4em;
+            text-decoration: none;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        span {
+            color: gray;
+            display: block;
+            font-size: 0.75em;
+            margin-top: 20px;
+        }
+
+        @media(min-width: 992px){
+            margin: 20% auto 0 auto;
+            flex-direction: row;
+            justify-content: space-around;
+
+            li {
+                margin: 8px;
+                padding: 8px;
+            }
         }
     }
 
-    &:hover {
-        color: ${colors.transparentWhite2};
-        background-color: ${colors.transparentWhite};
-    }
+    ${props => props.show && css`
+        display: block;
+        animation: ${slideMenu} 1s ease-in forwards;
+        z-index: 99;
 
-    @media (min-width: 992px) {
-        display: flex !important;
-        align-items: center;
-        border-bottom: 3px solid transparent;
-        padding: 16px 20px !important;
+        li {
+            opacity: 1;
 
-        &.active {
-            background: ${colors.transparentWhite};
-            border-bottom: 3px solid ${colors.white};
+            &:nth-of-type(1) {
+                animation: ${menuItemAnim} 0.6s forwards .8s ease-in-out;
+            }
+
+            &:nth-of-type(2) {
+                animation: ${menuItemAnim} 0.6s forwards 1.1s ease-in-out;
+            }
+
+            &:nth-of-type(3) {
+                animation: ${menuItemAnim} 0.6s forwards 1.3s ease-in-out;
+            }
+
+            &:nth-of-type(4) {
+                animation: ${menuItemAnim} 0.6s forwards 1.5s ease-in-out;
+            }
+            &:nth-of-type(5) {
+                animation: ${menuItemAnim} 0.6s forwards 1.7s ease-in-out;
+            }
+            &:nth-of-type(6) {
+                animation: ${menuItemAnim} 0.6s forwards 1.9s ease-in-out;
+            }
         }
-    }
-`;
-
-const navLinks = [
-  {
-    path: '/',
-    text: 'Home',
-  },
-  {
-    path: '/lancamentos',
-    text: 'Lançamentos',
-  },
-  {
-    path: '/portifolio',
-    text: 'Portifólio',
-  },
-  {
-    path: '/midia',
-    text: 'Mídia',
-  },
-  {
-    path: '/sobre',
-    text: 'Sobre',
-  },
-  {
-    path: '/contato',
-    text: 'Contato',
-  },
-];
+    `}
+`
 
 const Header = () => {
-  const { head } = data;
+    const { routes } = data
 
-  return (
-    <HeaderComponent>
-      <NavbarComponent variant="dark" expand="lg" sticky>
-        <Container>
-          <Logo to="/">
-            <img
-              src={LogoIMG}
-              alt="GD8"
-              title="GD8"
-              className="img-fluid"
-            />
-          </Logo>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <NavbarCollapse id="basic-navbar-nav">
-            <NavComponent>
-              {head.map((link, index) => (
-                <Card
-                  key={index}
-                  paintDrip
-                  top="exit"
-                  to={link.path}
-                  duration={1}
-                >
-                  {link.text}
-                </Card>
-              ))}
-              <Social />
-            </NavComponent>
-          </NavbarCollapse>
-        </Container>
-      </NavbarComponent>
-    </HeaderComponent>
-  );
-};
+    const [show, setShow] = React.useState(false)
+
+    return (
+        <HeaderWrapper>
+            <Button
+                type="button"
+                onClick={() => setShow(!show)}
+                show={show}
+            >
+                <svg id="icon" viewBox="0 0 800 600">
+                    <path
+                        d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
+                        id="top"
+                    ></path>
+                    <path d="M300,320 L540,320" id="middle"></path>
+                    <path
+                        d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
+                        id="bottom"
+                        transform="translate(480, 320) scale(1, -1) translate(-480, -318) "
+                    ></path>
+                </svg>
+            </Button>
+            <Nav show={show}>
+                <ul>
+                    {
+                        routes.map(route => (
+                            <li key={route.path}>
+                                <AniLink
+                                    cover
+                                    direction="right"
+                                    duration={1.5}
+                                    to={route.path}
+                                    bg={colors.themeColor}
+                                >
+                                    {route.text}
+                                </AniLink>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </Nav>
+        </HeaderWrapper>
+    )
+}
 const Social = () => {
-  const { social } = data;
+    const { social } = data
 
-  function useIcon(name) {
-    switch (name) {
-      case 'whatsapp':
-        return <ImWhatsapp />;
-      case 'facebook':
-        return <ImFacebook />;
-      case 'instagram':
-        return <AiOutlineInstagram />;
-      case 'twitter':
-        return <ImTwitter />;
-      case 'youtube':
-        return <AiOutlineYoutube />;
-      default:
-        return <></>;
+    function useIcon(name) {
+        switch (name) {
+            case "whatsapp":
+                return <ImWhatsapp />
+            case "facebook":
+                return <ImFacebook />
+            case "instagram":
+                return <AiOutlineInstagram />
+            case "twitter":
+                return <ImTwitter />
+            case "youtube":
+                return <AiOutlineYoutube />
+            default:
+                return <></>
+        }
     }
-  }
 
-  return (
-    <SocialContainer className="d-lg-none">
-      {social.map((item, i) => (
-        <a key={i} href={item.path} target="_blank" rel="noreferrer">
-          {useIcon(item.name)}
-        </a>
-      ))}
-    </SocialContainer>
-  );
-};
+    return (
+        <SocialContainer className="d-lg-none">
+            {social.map((item, i) => (
+                <a key={i} href={item.path} target="_blank" rel="noreferrer">
+                    {useIcon(item.name)}
+                </a>
+            ))}
+        </SocialContainer>
+    )
+}
 
-export default Header;
+export default Header
