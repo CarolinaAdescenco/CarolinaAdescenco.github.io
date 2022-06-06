@@ -8,16 +8,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { data } from "../../utils/data"
 import LogoIMG from "../../assets/gd8-incorporadora.png"
 
-import {
-    NavbarComponent,
-    NavbarCollapse,
-    NavComponent,
-    HeaderComponent,
-    SocialContainer,
-    Logo,
-} from "./styles"
 import { colors } from "../../utils/colors"
-
 
 const slideMenu = keyframes`
       from {
@@ -94,24 +85,24 @@ const Button = styled.button`
         stroke-dasharray: 240px 240px;
     }
 
-    ${props => props.show && css`
-        path#top,
-        path#bottom {
-            stroke-dashoffset: -650px;
-            stroke-dashoffset: -650px;
-        }
-        path#middle {
-            stroke-dashoffset: -115px;
-            stroke-dasharray: 1px 220px;
-        }
-    `}
+    ${props =>
+        props.show &&
+        css`
+            path#top,
+            path#bottom {
+                stroke-dashoffset: -650px;
+                stroke-dashoffset: -650px;
+            }
+            path#middle {
+                stroke-dashoffset: -115px;
+                stroke-dasharray: 1px 220px;
+            }
+        `}
 `
-
-
 
 const Nav = styled.nav`
     position: fixed;
-    background:black;
+    background: black;
     padding: 2em;
     width: 100vw;
     height: 100vh;
@@ -121,7 +112,6 @@ const Nav = styled.nav`
 
     ul {
         list-style-type: none;
-        margin: 20% auto 0 auto ;
         padding: 0;
         display: flex;
         flex-direction: column;
@@ -143,106 +133,82 @@ const Nav = styled.nav`
             text-transform: uppercase;
         }
 
-        span {
-            color: gray;
-            display: block;
-            font-size: 0.75em;
-            margin-top: 20px;
-        }
-
-        @media(min-width: 992px){
-            margin: 20% auto 0 auto;
+        @media (min-width: 1200px) {
             flex-direction: row;
             justify-content: space-around;
+            margin: 50px 0;
 
             li {
                 margin: 8px;
                 padding: 8px;
             }
         }
-    }
 
-    ${props => props.show && css`
-        display: block;
-        animation: ${slideMenu} 1s ease-in forwards;
-        z-index: 99;
+        &.social {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
 
-        li {
-            opacity: 1;
+            a {
+                font-size: 26px;
+                margin: 0 8px;
 
-            &:nth-of-type(1) {
-                animation: ${menuItemAnim} 0.6s forwards .8s ease-in-out;
-            }
-
-            &:nth-of-type(2) {
-                animation: ${menuItemAnim} 0.6s forwards 1.1s ease-in-out;
-            }
-
-            &:nth-of-type(3) {
-                animation: ${menuItemAnim} 0.6s forwards 1.3s ease-in-out;
-            }
-
-            &:nth-of-type(4) {
-                animation: ${menuItemAnim} 0.6s forwards 1.5s ease-in-out;
-            }
-            &:nth-of-type(5) {
-                animation: ${menuItemAnim} 0.6s forwards 1.7s ease-in-out;
-            }
-            &:nth-of-type(6) {
-                animation: ${menuItemAnim} 0.6s forwards 1.9s ease-in-out;
+                &:hover {
+                    color: ${colors.white};
+                }
             }
         }
-    `}
+    }
+
+    ${props =>
+        props.show &&
+        css`
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            animation: ${slideMenu} 1s ease-in forwards;
+            z-index: 99;
+
+            li {
+                opacity: 1;
+
+                &:nth-of-type(1) {
+                    animation: ${menuItemAnim} 0.6s forwards 0.8s ease-in-out;
+                }
+
+                &:nth-of-type(2) {
+                    animation: ${menuItemAnim} 0.6s forwards 1.1s ease-in-out;
+                }
+
+                &:nth-of-type(3) {
+                    animation: ${menuItemAnim} 0.6s forwards 1.3s ease-in-out;
+                }
+
+                &:nth-of-type(4) {
+                    animation: ${menuItemAnim} 0.6s forwards 1.5s ease-in-out;
+                }
+                &:nth-of-type(5) {
+                    animation: ${menuItemAnim} 0.6s forwards 1.7s ease-in-out;
+                }
+                &:nth-of-type(6) {
+                    animation: ${menuItemAnim} 0.6s forwards 1.9s ease-in-out;
+                }
+            }
+
+            .social {
+                li {
+                    animation: ${menuItemAnim} 0.6s forwards 1.13s ease-in-out;
+                }
+            }
+        `}
 `
 
 const Header = () => {
     const { routes } = data
-
-    const [show, setShow] = React.useState(false)
-
-    return (
-        <HeaderWrapper>
-            <Button
-                type="button"
-                onClick={() => setShow(!show)}
-                show={show}
-            >
-                <svg id="icon" viewBox="0 0 800 600">
-                    <path
-                        d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
-                        id="top"
-                    ></path>
-                    <path d="M300,320 L540,320" id="middle"></path>
-                    <path
-                        d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
-                        id="bottom"
-                        transform="translate(480, 320) scale(1, -1) translate(-480, -318) "
-                    ></path>
-                </svg>
-            </Button>
-            <Nav show={show}>
-                <ul>
-                    {
-                        routes.map(route => (
-                            <li key={route.path}>
-                                <AniLink
-                                    cover
-                                    direction="right"
-                                    duration={1.5}
-                                    to={route.path}
-                                    bg={colors.themeColor}
-                                >
-                                    {route.text}
-                                </AniLink>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </Nav>
-        </HeaderWrapper>
-    )
-}
-const Social = () => {
     const { social } = data
 
     function useIcon(name) {
@@ -262,14 +228,56 @@ const Social = () => {
         }
     }
 
+    const [show, setShow] = React.useState(false)
+
     return (
-        <SocialContainer className="d-lg-none">
-            {social.map((item, i) => (
-                <a key={i} href={item.path} target="_blank" rel="noreferrer">
-                    {useIcon(item.name)}
-                </a>
-            ))}
-        </SocialContainer>
+        <HeaderWrapper>
+            <Button type="button" onClick={() => setShow(!show)} show={show}>
+                <svg id="icon" viewBox="0 0 800 600">
+                    <path
+                        d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
+                        id="top"
+                    ></path>
+                    <path d="M300,320 L540,320" id="middle"></path>
+                    <path
+                        d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
+                        id="bottom"
+                        transform="translate(480, 320) scale(1, -1) translate(-480, -318) "
+                    ></path>
+                </svg>
+            </Button>
+            <Nav show={show}>
+                <ul>
+                    {routes.map(route => (
+                        <li key={route.path}>
+                            <AniLink
+                                cover
+                                direction="right"
+                                duration={1.5}
+                                to={route.path}
+                                bg={colors.themeColor}
+                            >
+                                {route.text}
+                            </AniLink>
+                        </li>
+                    ))}
+                </ul>
+
+                <ul class="social">
+                    {social.map((item, i) => (
+                        <li key={i}>
+                            <a
+                                href={item.path}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                {useIcon(item.name)}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </Nav>
+        </HeaderWrapper>
     )
 }
 
