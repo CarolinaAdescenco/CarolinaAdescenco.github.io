@@ -1,4 +1,5 @@
 import React from "react"
+import { Container } from "react-bootstrap"
 import { AiOutlineInstagram, AiOutlineYoutube } from "react-icons/ai"
 import { ImFacebook, ImTwitter, ImWhatsapp } from "react-icons/im"
 import styled, { css, keyframes } from "styled-components"
@@ -36,7 +37,18 @@ const menuItemAnim = keyframes`
 
 const HeaderWrapper = styled.header`
     display: flex;
-    flex-direction: column;
+    position: relative;
+    z-index: 9999999;
+    align-items: center;
+
+    .container{
+        display: flex;
+        align-items: center;
+    }
+
+    img {
+        max-width: 150px;
+    }
 `
 
 const Button = styled.button`
@@ -45,9 +57,10 @@ const Button = styled.button`
     background: transparent;
     z-index: 999;
 
+    width: 140px;
+    height: 140px;
+
     #icon {
-        width: 175px;
-        height: 125px;
         cursor: pointer;
         -webkit-transform: translate3d(0, 0, 0);
         -moz-transform: translate3d(0, 0, 0);
@@ -101,11 +114,13 @@ const Button = styled.button`
 `
 
 const Nav = styled.nav`
-    position: fixed;
+    position: absolute;
     background: black;
     padding: 2em;
     width: 100vw;
     height: 100vh;
+    top: 0;
+    bottom: 0;
     display: none;
     transform: scaleX(0);
     transform-origin: right;
@@ -232,20 +247,37 @@ const Header = () => {
 
     return (
         <HeaderWrapper>
-            <Button type="button" onClick={() => setShow(!show)} show={show}>
-                <svg id="icon" viewBox="0 0 800 600">
-                    <path
-                        d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
-                        id="top"
-                    ></path>
-                    <path d="M300,320 L540,320" id="middle"></path>
-                    <path
-                        d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
-                        id="bottom"
-                        transform="translate(480, 320) scale(1, -1) translate(-480, -318) "
-                    ></path>
-                </svg>
-            </Button>
+            <Container className="container">
+                <AniLink
+                    cover
+                    direction="right"
+                    duration={1.5}
+                    to="/"
+                    bg={colors.themeColor}
+                >
+                    <img src={LogoIMG} alt="" />
+                </AniLink>
+
+                <Button
+                    type="button"
+                    onClick={() => setShow(!show)}
+                    show={show}
+                >
+                    <svg id="icon" viewBox="0 0 800 600">
+                        <path
+                            d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
+                            id="top"
+                        ></path>
+                        <path d="M300,320 L540,320" id="middle"></path>
+                        <path
+                            d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
+                            id="bottom"
+                            transform="translate(480, 320) scale(1, -1) translate(-480, -318) "
+                        ></path>
+                    </svg>
+                </Button>
+            </Container>
+
             <Nav show={show}>
                 <ul>
                     {routes.map(route => (

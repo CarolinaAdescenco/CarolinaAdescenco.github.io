@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  InputComponent, InputMaskComponent, Group, LabelComponent, SelectComponent,
+  InputComponent, InputMaskComponent, Group, LabelComponent, SelectComponent
 } from './styles';
 
 const Input = ({

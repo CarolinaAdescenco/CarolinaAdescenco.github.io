@@ -1,11 +1,11 @@
-import { Col, Container as Cont } from 'react-bootstrap';
-import styled from 'styled-components';
+import { Col, Container as Cont } from "react-bootstrap"
+import styled from "styled-components"
 
-import { colors } from '../../utils/colors';
+import { colors } from "../../utils/colors"
 
 export const Container = styled(Cont)`
     margin: 50px auto;
-`;
+`
 
 export const TitlePage = styled.h1`
     color: ${colors.white};
@@ -14,7 +14,7 @@ export const TitlePage = styled.h1`
     padding-left: 24px;
     position: relative;
 
-    &:before{
+    &:before {
         content: "";
         width: 5px;
         height: 100%;
@@ -22,7 +22,7 @@ export const TitlePage = styled.h1`
         left: 0px;
         background-color: ${colors.themeColor2};
     }
-`;
+`
 
 export const Subtitle = styled.h2`
     color: ${colors.white};
@@ -31,7 +31,7 @@ export const Subtitle = styled.h2`
     padding-left: 24px !important;
     position: relative;
 
-    &:before{
+    &:before {
         content: "";
         width: 5px;
         height: 100%;
@@ -39,45 +39,46 @@ export const Subtitle = styled.h2`
         left: 0px;
         background-color: ${colors.themeColor3};
     }
-`;
+`
 
 export const Subcontent = styled.div`
     margin-left: 26px;
-`;
+`
 
 export const BackgroundImage = styled.div`
     height: 300px;
     background-size: cover;
 
-    @media(min-width: 768px){
+    @media (min-width: 768px) {
         height: 500px;
     }
-`;
+`
 
 export const Button = styled.button`
     border: none;
     border-radius: 0;
     width: 100%;
     padding: 16px 0;
-    margin:  0 0 16px 0;
+    margin: 0 0 16px 0;
 
     color: ${colors.white};
     font-weight: 200;
     white-space: nowrap;
 
-    background: ${(props) => (props.active ? colors.themeColor2 : colors.transparentBlack)};
-`;
+    background: ${props =>
+        props.active ? colors.themeColor2 : colors.transparentBlack};
+`
 
 export const DotColumn = styled(Col)`
     display: flex;
     align-items: center;
     margin: 32px 0;
 
-    @media(min-width: 768px){
+    @media (min-width: 768px) {
         flex-direction: column;
         margin: 0;
     }
-`;
+`
 
 export const DotButton = styled.button`
     border: none;
@@ -90,27 +91,28 @@ export const DotButton = styled.button`
     font-weight: 200;
     white-space: nowrap;
 
-    background: ${(props) => (props.active ? colors.transparentWhite2 : colors.transparentWhite)};
+    background: ${props =>
+        props.active ? colors.transparentWhite2 : colors.transparentWhite};
 
-    @media(min-width: 768px){
+    @media (min-width: 768px) {
         margin: 0px 0px 16px 0;
     }
-`;
+`
 
 export const Aside = styled.a`
     color: ${colors.white};
 
-    p{
+    p {
         font-weight: 200;
         margin: 0 0 8px 0;
         font-size: 18px;
     }
-`;
+`
 
 export const Hr = styled.hr`
     background-color: ${colors.white};
     margin-bottom: 36px;
-`;
+`
 
 export const Figure = styled.figure`
     position: relative;
@@ -120,11 +122,11 @@ export const Figure = styled.figure`
 
     background: ${colors.gray};
 
-    img{
+    img {
         mix-blend-mode: multiply;
     }
 
-    figcaption{
+    figcaption {
         position: absolute;
         font-weight: 700;
         color: ${colors.white};
@@ -133,47 +135,32 @@ export const Figure = styled.figure`
         margin: 0 0 48px 0;
     }
 
-    @media(min-width: 768px){
+    @media (min-width: 768px) {
         align-items: center;
 
-        figcaption{
+        figcaption {
             margin: 0;
             font-size: 32px;
         }
     }
 
-    @media(min-width: 1200px){
-        figcaption{
+    @media (min-width: 1200px) {
+        figcaption {
             font-size: 48px;
         }
     }
-`;
+`
 
-export const WhatsAppButton = styled.a`
-    position: fixed;
-    right: 15px;
-    bottom: 15px;
+export const Main = styled.main`
+    position: relative;
+`
 
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: ${colors.white};
-    font-size: 26px;
-    background-color: ${colors.green};
-    -webkit-box-shadow: 6px 12px 25px -5px rgba(0,0,0,0.67);
-    box-shadow: 6px 12px 25px -5px rgba(0,0,0,0.67);
-`;
 
 export const Iframe = styled.iframe`
     width: 100%;
     height: 100%;
 
-    @media(min-width: 992px){
+    @media (min-width: 992px) {
         min-height: 300px;
     }
-`;
+`
