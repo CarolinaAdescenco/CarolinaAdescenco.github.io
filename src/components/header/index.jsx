@@ -295,7 +295,7 @@ const Header = () => {
                     ))}
                 </ul>
 
-                <ul class="social">
+                <ul className="social">
                     {social.map((item, i) => (
                         <li key={i}>
                             <a

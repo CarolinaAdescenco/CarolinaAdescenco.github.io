@@ -8,10 +8,33 @@ export const data = {
     secondLine: 'Pinheiros – São Paulo – SP CEP 05420-003',
   },
   phone: '+ 55 11 3034-0355',
+  homeRoutes: [
+    {
+      title: 'Área de atuação',
+      subtitle: 'Brasil | EUA',
+    },
+    {
+      title: 'Prêmios',
+      subtitle: '2011 | 2013',
+      path: '/premios'
+    },
+    {
+      title: 'Na mídia',
+      path: '/midia'
+    },
+    {
+      title: 'Nossos cases principais',
+      path: '/cases',
+    },
+    {
+      title: 'Arquitetos que trabalhamos',
+      path: '/arquitetos',
+    },
+  ],
   routes: [
     {
       path: '/',
-      text: 'Home',
+      text: 'Home'
     },
     {
       path: '/lancamentos',

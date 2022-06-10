@@ -1,15 +1,12 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from "react"
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 import { Container, Row, Col } from "react-bootstrap"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { bounce } from "react-animations"
 
 import LogoIMG from "../assets/gd8-incorporadora-logo.png"
 import { colors } from "../utils/colors"
-
-import Building from "../assets/svg/building.jsx"
-import Laurel from "../assets/svg/laurel.jsx"
+import { data as dataUtils } from "../utils/data"
 
 import Img1 from "../assets/home/gd8-one-haus-piscina.jpeg"
 import Img2 from "../assets/home/gd8-one-haus.jpeg"
@@ -49,10 +46,10 @@ const Logo = styled.aside`
     }
 
     @media (min-width: 992px) {
-        width: 460px;
+        width: 100%;
 
         h2 {
-            letter-spacing: 24px;
+            letter-spacing: 16px;
             margin-left: 24px;
             font-size: 21px;
             margin-top: 18px;
@@ -69,13 +66,23 @@ const Background = styled.section`
     background-blend-mode: multiply;
     background-color: ${colors.transparentBlack};
 
-    height: 100vh;
-    width: 100vw;
-
     display: flex;
     align-items: center;
 
     transition: 0.5s ease-in-out;
+
+    .row-principal {
+        margin: 230px 0 80px 0;
+    }
+
+    @media (min-width: 992px) {
+        height: 100vh;
+        width: 100vw;
+
+        .row-principal {
+            margin: 0;
+        }
+    }
 `
 
 const DotColumn = styled.div`
@@ -84,7 +91,7 @@ const DotColumn = styled.div`
     margin: 32px auto;
     justify-content: center;
 
-    @media (min-width: 768px) {
+    @media (min-width: 992px) {
         flex-direction: row;
         margin: auto;
     }
@@ -104,71 +111,108 @@ const DotButton = styled.button`
     background: ${props =>
         props.active ? colors.white : colors.transparentWhite};
 
-    @media (min-width: 768px) {
-        margin: 36px 24px 0 0;
+    @media (min-width: 992px) {
+        margin: 0 24px 0 0;
+    }
+`
+
+const RowAnimated = styled.div`
+    display: flex;
+    justify-content: end;
+    flex-wrap: wrap;
+
+    @media (min-width: 992px) {
+        a:nth-child(odd) {
+            margin-bottom: 60px;
+        }
+
+        a:nth-child(even) {
+            margin-top: 60px;
+        }
+    }
+`
+
+const CardButton = styled.div`
+    margin: 16px;
+    padding: 21px;
+    background: ${colors.dark};
+    border-radius: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: fit-content;
+    color: ${colors.white};
+    transform: translateY(0);
+    transition: 0.5s ease-in-out;
+    -webkit-box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
+    box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
+    font-weight: 100;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    width: 100%;
+
+    span {
+        margin-top: 8px;
+    }
+
+    @media (min-width: 992px) {
+        max-width: 260px;
+        margin: 16px;
+        padding: 26px 36px;
+
+        &:hover {
+            color: ${colors.white};
+            transform: translateY(-2.5px);
+        }
     }
 `
 
 const AniButton = styled(AniLink)`
-    display: block;
-    padding: 16px 16px 16px 0;
-    border-right: 1px solid ${colors.white};
-    border-left: none;
     margin: 16px;
-    color: ${colors.white};
-    text-decoration: none;
-    font-size: 24px;
+    padding: 21px;
+    background: ${colors.dark};
+    border-radius: 12px;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: fit-content;
+    color: ${colors.white};
+    transform: translateY(0);
+    transition: 0.5s ease-in-out;
+    -webkit-box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
+    box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
     font-weight: 100;
-    transition: 0.5s all;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    width: 100%;
 
-    position: relative;
-
-    svg {
-        fill: ${colors.white};
-        stroke: ${colors.white};
-        margin-right: 16px;
+    span {
+        margin-top: 8px;
     }
 
-    &:after {
-        content: "";
-        width: 70%;
-        height: 1px;
-        background: ${colors.white};
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
+    @media (min-width: 992px) {
+        max-width: 260px;
+        margin: 16px;
+        padding: 26px 36px;
 
-    &:before {
-        content: "";
-        width: 65%;
-        height: 1px;
-        background: ${colors.white};
-        position: absolute;
-        bottom: 0;
-        right: 0;
-    }
-
-    &:hover {
-        color: ${colors.white};
-        border-right: 1px solid ${colors.themeColor2};
-
-        svg {
-            fill: ${colors.themeColor2};
-            stroke: ${colors.themeColor2};
-        }
-
-        &:after,
-        &:before {
-            background: ${colors.themeColor2};
+        &:hover {
+            color: ${colors.white};
+            transform: translateY(-2.5px);
         }
     }
 `
 
 const Index = () => {
     const [element, setElement] = React.useState(0)
+    const { homeRoutes } = dataUtils
 
     function useInterval(callback, delay) {
         const savedCallback = React.useRef()
@@ -185,60 +229,73 @@ const Index = () => {
         }, [delay])
     }
 
-    // useInterval(() => {
-    //     setElement(element + 1)
+    useInterval(() => {
+        setElement(element + 1)
 
-    //     if (element === images.length - 1) {
-    //         setElement(0)
-    //     }
-    // }, 3000)
+        if (element === images.length - 1) {
+            setElement(0)
+        }
+    }, 3000)
 
     return (
-        <Background bg={images[element]} className="h-100">
+        <Background bg={images[element]}>
             <Contact />
 
             <Container>
-                <Row className="justify-content-between">
-                    <Col className="col-12 col-md-4">
+                <Row className="justify-content-between align-items-center mt-5 row-principal">
+                    <Col className="col-12 col-lg-4 p-0 mb-5">
                         <Logo>
                             <img src={LogoIMG} alt="logo" />
                             <h2>Incorporadora</h2>
                         </Logo>
                     </Col>
 
-                    <Col className="col-12 col-md-6">
-                        <AniButton
-                            cover
-                            direction="right"
-                            duration={1.5}
-                            to="/midia"
-                            bg={colors.themeColor}
-                        >
-                            <Laurel width="60px" title="teste" /> Prêmios
-                        </AniButton>
-
-                        <AniButton
-                            cover
-                            direction="right"
-                            duration={1.5}
-                            to="/contato"
-                            bg={colors.themeColor}
-                        >
-                            <Building width="100px" height="auto" /> Arquitetos
-                        </AniButton>
+                    <Col className="col-12 col-lg-8">
+                        <RowAnimated>
+                            {homeRoutes.map((item, i) =>
+                                item.path ? (
+                                    <AniButton
+                                        key={i}
+                                        cover
+                                        direction="right"
+                                        duration={1.5}
+                                        to={item?.path}
+                                        bg={colors.themeColor}
+                                    >
+                                        {item.title}
+                                        {item.subtitle && (
+                                            <>
+                                                <br />
+                                                <span>{item.subtitle}</span>
+                                            </>
+                                        )}
+                                    </AniButton>
+                                ) : (
+                                    <CardButton key={i}>
+                                        {item.title}
+                                        {item.subtitle && (
+                                            <>
+                                                <br />
+                                                <span>{item.subtitle}</span>
+                                            </>
+                                        )}
+                                    </CardButton>
+                                )
+                            )}
+                        </RowAnimated>
                     </Col>
-                </Row>
 
-                <DotColumn className="col-12 col-md-1">
-                    {images.map((item, index) => (
-                        <DotButton
-                            key={item}
-                            type="button"
-                            active={index === element}
-                            onClick={() => setElement(index)}
-                        />
-                    ))}
-                </DotColumn>
+                    <DotColumn className="col-12 mt-5 d-none d-lg-flex">
+                        {images.map((item, index) => (
+                            <DotButton
+                                key={item}
+                                type="button"
+                                active={index === element}
+                                onClick={() => setElement(index)}
+                            />
+                        ))}
+                    </DotColumn>
+                </Row>
             </Container>
         </Background>
     )
