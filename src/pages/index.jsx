@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from "react"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { Container, Row, Col } from "react-bootstrap"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { fadeInDown, fadeInUp } from "react-animations"
 
 import LogoIMG from "../assets/gd8-incorporadora-logo.png"
 import { colors } from "../utils/colors"
@@ -17,6 +18,9 @@ import Img5 from "../assets/home/gd8-west-whales.jpeg"
 import Contact from "../components/contact"
 
 const images = [Img1, Img2, Img3, Img4, Img5]
+
+const fadeDown = keyframes`${fadeInDown}`
+const fadeUp = keyframes`${fadeInUp}`
 
 const Logo = styled.aside`
     display: flex;
@@ -122,12 +126,18 @@ const RowAnimated = styled.div`
     flex-wrap: wrap;
 
     @media (min-width: 992px) {
-        a:nth-child(odd) {
+        a:nth-child(odd),
+        div:nth-child(odd) {
             margin-bottom: 60px;
+            animation: 1.5s ${fadeDown};
+            animation-delay: 1s;
         }
 
-        a:nth-child(even) {
+        a:nth-child(even),
+        div:nth-child(even) {
             margin-top: 60px;
+            animation: 1.5s ${fadeUp};
+            animation-delay: 1s;
         }
     }
 `
@@ -165,8 +175,10 @@ const CardButton = styled.div`
         padding: 26px 36px;
 
         &:hover {
-            color: ${colors.white};
+            font-weight: 300;
+            color: ${colors.dark};
             transform: translateY(-2.5px);
+            background: ${colors.white};
         }
     }
 `
@@ -204,8 +216,10 @@ const AniButton = styled(AniLink)`
         padding: 26px 36px;
 
         &:hover {
-            color: ${colors.white};
+            color: ${colors.dark};
+            font-weight: 300;
             transform: translateY(-2.5px);
+            background: ${colors.white};
         }
     }
 `

@@ -14,15 +14,25 @@ const Wrapper = styled.div`
     z-index: 99;
 
     width: 100%;
-    height: 50px;
+    padding: 12px 0;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    h2{
+        font-size: 18px;
+        font-weight: 100;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .links{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 
     color: ${colors.white};
     font-size: 26px;
-    background-color: ${colors.themeColor};
+    background-color: ${colors.dark};
     -webkit-box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
     box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
 
@@ -51,48 +61,36 @@ const Wrapper = styled.div`
     }
 
     @media (min-width: 992px) {
-        top: 45%;
         right: 0;
         z-index: 99;
-        width: 50px;
-        height: 160px;
-
-        flex-direction: column;
-
-        a {
-            padding: 16px 0;
-
-            &:nth-child(1) {
-                &:after {
-                    content: "";
-                    position: absolute;
-                    right: inherit;
-                    bottom: 0;
-                    width: 60%;
-                    height: 1px;
-                    background: ${colors.gray};
-                }
-            }
-        }
+        right: 6%;
+        width: 160px;
+        padding: 10px;
     }
 `
 
 const Contact = () => {
     return (
         <Wrapper>
-            <a href="#">
-                <ImWhatsapp />
-            </a>
+            <h2>
+                Contato
+            </h2>
 
-            <AniLink
-                cover
-                direction="right"
-                duration={1.5}
-                to="/contato"
-                bg={colors.themeColor}
-            >
-                <MdOutlineMailOutline />
-            </AniLink>
+            <div className="links">
+                <a href="#">
+                    <ImWhatsapp />
+                </a>
+
+                <AniLink
+                    cover
+                    direction="right"
+                    duration={1.5}
+                    to="/contato"
+                    bg={colors.themeColor}
+                >
+                    <MdOutlineMailOutline />
+                </AniLink>
+            </div>
         </Wrapper>
     )
 }
