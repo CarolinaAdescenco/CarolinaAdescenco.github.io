@@ -18,7 +18,7 @@ const PortifolioPost = (content) => {
     galeria,
   } = content.pageContext;
 
-  const lightbox1 = galeria !== null ? galeria.map((planta) => planta.url) : [];
+  const lightbox1 = galeria !== null ? galeria?.map((planta) => planta.url) : [];
 
   return (
     <Layout>

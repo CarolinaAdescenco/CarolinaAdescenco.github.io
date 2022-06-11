@@ -152,7 +152,8 @@ export const Figure = styled.figure`
 `
 
 export const Main = styled.main`
-    position: relative;
+    position: absolute;
+    top: 0;
 `
 
 

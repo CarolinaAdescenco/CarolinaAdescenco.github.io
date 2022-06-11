@@ -13,7 +13,7 @@ import { Main } from "./styles"
 
 import Contact from "../contact"
 
-const Layout = ({ children, description, meta, title, titlePage }) => {
+const Layout = ({ children, description, meta, title, titlePage, page }) => {
     const { social } = data;
 
     return (
@@ -25,7 +25,7 @@ const Layout = ({ children, description, meta, title, titlePage }) => {
                 titlePage={titlePage}
             />
 
-            <Header className="fixed" />
+            <Header className="fixed" page={page}/>
 
             <Main>{children}</Main>
 
