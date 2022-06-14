@@ -134,15 +134,20 @@ const Header = ({ page }) => {
                         Inicio
                     </AniButton>
 
-                    <CardButton>
-                        {title}
-                        {subtitle && (
-                            <>
-                                <br />
-                                <span>{subtitle}</span>
-                            </>
-                        )}
-                    </CardButton>
+                    {
+                        title && (
+                            <CardButton>
+                                {title}
+                                {subtitle && (
+                                    <>
+                                        <br />
+                                        <span>{subtitle}</span>
+                                    </>
+                                )}
+                            </CardButton>
+                        )
+                    }
+
                 </div>
             </Container>
         </HeaderWrapper>

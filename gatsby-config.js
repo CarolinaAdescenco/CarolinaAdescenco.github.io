@@ -7,6 +7,22 @@ module.exports = {
   plugins: [
     'gatsby-plugin-transition-link',
     {
+        resolve: `gatsby-plugin-styled-components`,
+        options: {
+            displayName: false,
+            disableVendorPrefixes: true
+        }
+    },
+    {
+        resolve: `gatsby-plugin-google-fonts`,
+        options: {
+          fonts: [
+            `roboto\:100,300`
+          ],
+          display: 'swap'
+        }
+    },
+    {
       resolve: 'gatsby-source-contentful',
       options: {
         spaceId: 'dyf0vc02crj9',

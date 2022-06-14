@@ -21,7 +21,8 @@ const PortifolioPost = (content) => {
   const lightbox1 = galeria !== null ? galeria?.map((planta) => planta.url) : [];
 
   return (
-    <Layout>
+    <>
+    {/* // <Layout> */}
       {/* <Figure bgDesktop={bannerDesktop.url} bgMobile={bannerMobile.url}> */}
       <Container>
         <Row className="justify-content-start box-principal">
@@ -65,7 +66,9 @@ const PortifolioPost = (content) => {
         }
 
       </Wrapper>
-    </Layout>
+    {/* // </Layout> */}
+
+    </>
   );
 };
 export default PortifolioPost;

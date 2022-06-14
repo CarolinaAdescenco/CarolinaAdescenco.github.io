@@ -14,8 +14,10 @@ import { Button } from "../components/layout/styles"
 
 import { Input, InputPhone, Select } from "../components/form"
 import { colors } from "../utils/colors"
-import { data as dataUtils } from "../utils/data"
+import { data as util } from "../utils/data"
 import LoadSnake from "../components/loader"
+
+import Img3 from "../assets/home/gd8-west-whales-2.jpeg"
 
 const serviceKey = "service_atzby68"
 const templateKey = "template_5e9tnrl"
@@ -156,7 +158,7 @@ const Contato = ({ data }) => {
 
     const [cliente, setCliente] = React.useState(true);
 
-    const { social } = dataUtils
+    const { social } = util
 
     function useIcon(name) {
         switch (name) {
@@ -201,30 +203,15 @@ const Contato = ({ data }) => {
         )
     }
 
+    const page = {
+        title: "Contato"
+    }
+
     return (
-        <Layout>
-            <Background />
+        <Layout page={page} bg={Img3}>
 
             <Container>
                 <Row>
-                    <InfoCol className="col-12 col-lg-5">
-                        <p>{dataUtils.adress.firstLine}</p>
-                        <p>{dataUtils.adress.secondLine}</p>
-
-                        <List>
-                            {social.map((item, i) => (
-                                <li key={i}>
-                                    <a
-                                        href={item.path}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    >
-                                        {useIcon(item.name)}
-                                    </a>
-                                </li>
-                            ))}
-                        </List>
-                    </InfoCol>
                     <Col className="col-12 col-lg-7">
                         <Wrapper>
                             <FormOption checked={cliente} type="button" onClick={() => setCliente(true)}>

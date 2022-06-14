@@ -1,5 +1,5 @@
 import { Col, Container as Cont } from "react-bootstrap"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 import { colors } from "../../utils/colors"
 
@@ -152,10 +152,30 @@ export const Figure = styled.figure`
 `
 
 export const Main = styled.main`
-    position: absolute;
-    top: 0;
-`
+    ${props =>
+        props.bg &&
+        css`
+            position: absolute;
+            top: 0;
+            background-image: ${props => `url(${props.bg})`};
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
 
+            background-blend-mode: multiply;
+            background-color: ${colors.transparentBlack};
+
+            display: flex;
+            align-items: center;
+
+            transition: 0.5s ease-in-out;
+
+            @media (min-width: 992px) {
+                height: 100vh;
+                width: 100vw;
+            }
+        `}
+`
 
 export const Iframe = styled.iframe`
     width: 100%;

@@ -2,7 +2,6 @@ import React from "react"
 import CookieConsent from "react-cookie-consent"
 
 import Header from "../header"
-// import Footer from "../footer"
 import Seo from "../seo"
 import Modal from "../modal"
 
@@ -13,7 +12,7 @@ import { Main } from "./styles"
 
 import Contact from "../contact"
 
-const Layout = ({ children, description, meta, title, titlePage, page }) => {
+const Layout = ({ children, description, meta, title, titlePage, page, bg }) => {
     const { social } = data;
 
     return (
@@ -27,7 +26,7 @@ const Layout = ({ children, description, meta, title, titlePage, page }) => {
 
             <Header className="fixed" page={page}/>
 
-            <Main>{children}</Main>
+            <Main bg={bg}>{children}</Main>
 
             <Contact/>
 

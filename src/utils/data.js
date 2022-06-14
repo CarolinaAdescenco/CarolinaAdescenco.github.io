@@ -19,10 +19,6 @@ export const data = {
       path: '/premios'
     },
     {
-      title: 'Na mídia',
-      path: '/midia'
-    },
-    {
       title: 'Nossos cases principais',
       path: '/cases',
     },
@@ -43,10 +39,6 @@ export const data = {
     {
       path: '/portifolio',
       text: 'Portifólio',
-    },
-    {
-      path: '/midia',
-      text: 'Mídia',
     },
     {
       path: '/sobre',
