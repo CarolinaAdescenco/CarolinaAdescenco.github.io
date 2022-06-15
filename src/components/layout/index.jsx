@@ -8,7 +8,7 @@ import Modal from "../modal"
 import { data } from "../../utils/data"
 
 
-import { Main } from "./styles"
+import { Main, Container } from "./styles"
 
 import Contact from "../contact"
 
@@ -26,7 +26,11 @@ const Layout = ({ children, description, meta, title, titlePage, page, bg }) => 
 
             <Header className="fixed" page={page}/>
 
-            <Main bg={bg}>{children}</Main>
+            <Main bg={bg}>
+                <Container>
+                    {children}
+                </Container>
+            </Main>
 
             <Contact/>
 

@@ -4,7 +4,13 @@ import styled, { css } from "styled-components"
 import { colors } from "../../utils/colors"
 
 export const Container = styled(Cont)`
-    margin: 50px auto;
+    margin-top: 130px;
+    margin-bottom: 130px;
+
+    @media(min-width: 992px){
+        margin-top: 190px;
+        margin-bottom: 100px;
+    }
 `
 
 export const TitlePage = styled.h1`
@@ -170,8 +176,10 @@ export const Main = styled.main`
 
             transition: 0.5s ease-in-out;
 
+            height: initial;
+            min-height: 100vh;
+
             @media (min-width: 992px) {
-                height: 100vh;
                 width: 100vw;
             }
         `}

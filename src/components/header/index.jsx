@@ -112,42 +112,27 @@ const Header = ({ page }) => {
     return (
         <HeaderWrapper>
             <Container className="container">
-                <AniLink
-                    cover
-                    direction="right"
-                    duration={1.5}
-                    to="/"
-                    bg={colors.themeColor}
-                >
+                <AniLink to="/" fade duration={2}>
                     <img src={LogoIMG} alt="" />
                 </AniLink>
 
                 <div className="container flex-end">
-                    <AniButton
-                        to="/"
-                        cover
-                        direction="left"
-                        duration={1.5}
-                        bg={colors.themeColor}
-                    >
+                    <AniButton to="/" fade duration={2}>
                         <FiChevronsLeft />
                         Inicio
                     </AniButton>
 
-                    {
-                        title && (
-                            <CardButton>
-                                {title}
-                                {subtitle && (
-                                    <>
-                                        <br />
-                                        <span>{subtitle}</span>
-                                    </>
-                                )}
-                            </CardButton>
-                        )
-                    }
-
+                    {title && (
+                        <CardButton>
+                            {title}
+                            {subtitle && (
+                                <>
+                                    <br />
+                                    <span>{subtitle}</span>
+                                </>
+                            )}
+                        </CardButton>
+                    )}
                 </div>
             </Container>
         </HeaderWrapper>

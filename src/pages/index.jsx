@@ -2,7 +2,6 @@
 import * as React from "react"
 import styled, { keyframes } from "styled-components"
 import { Container, Row, Col } from "react-bootstrap"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { fadeInDown, fadeInUp } from "react-animations"
 
 import LogoIMG from "../assets/gd8-incorporadora-logo.png"
@@ -16,6 +15,7 @@ import Img4 from "../assets/home/gd8-west-whales-3.jpeg"
 import Img5 from "../assets/home/gd8-west-whales.jpeg"
 
 import Contact from "../components/contact"
+import Link from "../components/aniLink"
 
 const images = [Img1, Img2, Img3, Img4, Img5]
 
@@ -183,47 +183,6 @@ const CardButton = styled.div`
     }
 `
 
-const AniButton = styled(AniLink)`
-    margin: 16px;
-    padding: 21px;
-    background: ${colors.dark};
-    border-radius: 12px;
-    text-transform: uppercase;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    width: fit-content;
-    color: ${colors.white};
-    transform: translateY(0);
-    transition: 0.5s ease-in-out;
-    -webkit-box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
-    box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
-    font-weight: 100;
-    font-size: 18px;
-    letter-spacing: 1.5px;
-    width: 100%;
-
-    span {
-        margin-top: 8px;
-    }
-
-    @media (min-width: 992px) {
-        max-width: 260px;
-        margin: 16px;
-        padding: 26px 36px;
-
-        &:hover {
-            color: ${colors.dark};
-            font-weight: 300;
-            transform: translateY(-2.5px);
-            background: ${colors.white};
-        }
-    }
-`
-
 const Index = () => {
     const [element, setElement] = React.useState(0)
     const { homeRoutes } = dataUtils
@@ -268,14 +227,7 @@ const Index = () => {
                         <RowAnimated>
                             {homeRoutes.map((item, i) =>
                                 item.path ? (
-                                    <AniButton
-                                        key={i}
-                                        cover
-                                        direction="right"
-                                        duration={1.5}
-                                        to={item?.path}
-                                        bg={colors.themeColor}
-                                    >
+                                    <Link key={i} to={item?.path}>
                                         {item.title}
                                         {item.subtitle && (
                                             <>
@@ -283,7 +235,7 @@ const Index = () => {
                                                 <span>{item.subtitle}</span>
                                             </>
                                         )}
-                                    </AniButton>
+                                    </Link>
                                 ) : (
                                     <CardButton key={i}>
                                         {item.title}
