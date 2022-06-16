@@ -12,7 +12,7 @@ import { Main, Container } from "./styles"
 
 import Contact from "../contact"
 
-const Layout = ({ children, description, meta, title, titlePage, page, bg }) => {
+const Layout = ({ children, description, meta, title, titlePage, page, bg, margin }) => {
     const { social } = data;
 
     return (
@@ -27,7 +27,7 @@ const Layout = ({ children, description, meta, title, titlePage, page, bg }) => 
             <Header className="fixed" page={page}/>
 
             <Main bg={bg}>
-                <Container>
+                <Container margin={margin}>
                     {children}
                 </Container>
             </Main>

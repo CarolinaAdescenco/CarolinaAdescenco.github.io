@@ -3,19 +3,16 @@ import { Modal as M } from 'react-bootstrap';
 
 import { colors } from '../../utils/colors';
 
-export const Card = styled.button`
+export const Card = styled.img`
     width: 100%;
-    height: 400px;
     display: ${(props) => (props.show ? 'flex' : 'none')};
-    background-image: ${(props) => `url(${props.bg})`};
     background-size: cover;
-
+    cursor: pointer;
     border: none;
     outline: none;
 `;
 
 export const Modal = styled(M)`
-    position: relative;
 
     button{
         font-size: 36px;

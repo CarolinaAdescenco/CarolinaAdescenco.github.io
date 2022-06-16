@@ -105,11 +105,11 @@ const arq = [
 
 const Arquitetos = () => {
     return (
-        <Layout titlePage="Arquitetos" page={util.homeRoutes[3]} bg={Img3}>
+        <Layout titlePage="Arquitetos" page={util.homeRoutes[3]} bg={Img3} margin="190px">
             <Container>
                 <RowAnimated>
-                    {arq.map(arq => (
-                        <Col className="item">
+                    {arq.map((arq, i) => (
+                        <Col className="item" key={i}>
                             <Link to={arq.path}>
                                 <LinkBody>
                                     <h3>{arq.title}</h3>

@@ -8,8 +8,8 @@ export const Container = styled(Cont)`
     margin-bottom: 130px;
 
     @media(min-width: 992px){
-        margin-top: 190px;
-        margin-bottom: 100px;
+        margin-top: ${props => props.margin || '100px'};
+        margin-bottom: ${props => props.margin || '100px'};
     }
 `
 
@@ -179,9 +179,9 @@ export const Main = styled.main`
             height: initial;
             min-height: 100vh;
 
-            @media (min-width: 992px) {
-                width: 100vw;
-            }
+
+            width: 100vw;
+            min-width: -webkit-fill-available;
         `}
 `
 

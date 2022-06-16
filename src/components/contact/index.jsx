@@ -82,11 +82,9 @@ const Contact = () => {
                 </a>
 
                 <AniLink
-                    cover
-                    direction="right"
-                    duration={1.5}
+                    fade
+                    duration={3}
                     to="/contato"
-                    bg={colors.themeColor}
                 >
                     <MdOutlineMailOutline />
                 </AniLink>
