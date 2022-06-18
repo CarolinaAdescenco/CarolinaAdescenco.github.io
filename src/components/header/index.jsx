@@ -15,20 +15,19 @@ const HeaderWrapper = styled.header`
     align-items: center;
     margin: 16px 0 0 0;
 
-    .margin-right{
+    .margin-right {
         margin-right: auto;
     }
 
-    .card-button{
+    .card-button {
         margin: 16px 0 16px auto;
     }
 
-    @media(min-width: 992px){
-        .card-button{
+    @media (min-width: 992px) {
+        .card-button {
             margin: 0;
         }
     }
-
 
     img {
         max-width: 150px;
@@ -48,16 +47,18 @@ const CardButton = styled.div`
     flex-direction: column;
     text-align: center;
     width: fit-content;
-    color: ${colors.white};
     transform: translateY(0);
     transition: 0.5s ease-in-out;
-    font-size: 18px;
-    letter-spacing: 1.5px;
     width: 100%;
-
-    font-weight: 300;
-    color: ${colors.dark};
     background: ${colors.white};
+
+    h1{
+        font-size: 18px;
+        letter-spacing: 1.5px;
+        font-weight: 300;
+        color: ${colors.dark};
+        margin: 0;
+    }
 
     span {
         margin-top: 8px;
@@ -127,17 +128,18 @@ const Header = ({ page }) => {
                         </AniButton>
                     </Col>
 
-
                     {title && (
                         <Col className="col-6 col-lg-3 card-button">
                             <CardButton>
-                                {title}
-                                {subtitle && (
-                                    <>
-                                        <br />
-                                        <span>{subtitle}</span>
-                                    </>
-                                )}
+                                <h1>
+                                    {title}
+                                    {subtitle && (
+                                        <>
+                                            <br />
+                                            <span>{subtitle}</span>
+                                        </>
+                                    )}
+                                </h1>
                             </CardButton>
                         </Col>
                     )}

@@ -58,9 +58,7 @@ export const NavLink = styled(Link)`
     color: ${colors.white};
     text-decoration: none;
     text-align: center;
-
     transition: all .2s;
-
 
     @media(max-width: 991px){
         width: 300px;

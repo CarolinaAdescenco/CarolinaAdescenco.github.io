@@ -63,7 +63,7 @@ const Wrapper = styled.div`
     @media (min-width: 992px) {
         right: 0;
         z-index: 99;
-        right: 6%;
+        right: 3%;
         width: 160px;
         padding: 10px;
     }

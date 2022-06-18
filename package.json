@@ -36,6 +36,7 @@
     "contentful": "^9.1.18",
     "emailjs": "^4.0.0",
     "gatsby": "^4.0.0",
+    "gatsby-env-variables": "^2.0.0",
     "gatsby-plugin-gdpr-cookies": "^2.0.8",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-image": "^2.0.0",
@@ -61,6 +62,7 @@
     "react-hook-form": "^7.30.0",
     "react-icons": "^4.3.1",
     "react-input-mask": "^2.0.4",
+    "react-toastify": "^9.0.4",
     "styled-components": "^5.3.5",
     "sweetalert2": "^11.4.9"
   },

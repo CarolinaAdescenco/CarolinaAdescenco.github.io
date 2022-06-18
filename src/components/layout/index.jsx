@@ -11,12 +11,15 @@ import { data } from "../../utils/data"
 import { Main, Container } from "./styles"
 
 import Contact from "../contact"
+import { ToastContainer } from "react-toastify"
 
 const Layout = ({ children, description, meta, title, titlePage, page, bg, margin }) => {
     const { social } = data;
 
     return (
         <>
+             <ToastContainer />
+
             <Seo
                 description={description}
                 meta={meta}
