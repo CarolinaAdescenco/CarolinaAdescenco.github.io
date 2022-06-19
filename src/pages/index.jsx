@@ -2,11 +2,11 @@
 import * as React from "react"
 import styled, { keyframes } from "styled-components"
 import { Container as Cont, Row, Col } from "react-bootstrap"
-import { fadeInDown, fadeInUp } from "react-animations"
+import { fadeInDown, fadeInLeft, fadeInRight, fadeInUp } from "react-animations"
 
 import LogoIMG from "../assets/gd8-incorporadora-logo.png"
 import { colors } from "../utils/colors"
-import { data as dataUtils } from "../utils/data"
+import { data as util } from "../utils/data"
 
 import Img1 from "../assets/home/gd8-one-haus-piscina.jpeg"
 import Img2 from "../assets/home/gd8-one-haus.jpeg"
@@ -15,12 +15,15 @@ import Img4 from "../assets/home/gd8-west-whales-3.jpeg"
 import Img5 from "../assets/home/gd8-west-whales.jpeg"
 
 import Contact from "../components/contact"
-import Link from "../components/aniLink"
+import Link from "../components/link"
+import { useInterval } from "../utils/functions"
 
 const images = [Img1, Img2, Img3, Img4, Img5]
 
 const fadeDown = keyframes`${fadeInDown}`
 const fadeUp = keyframes`${fadeInUp}`
+const fadeLeft = keyframes`${fadeInLeft}`
+const fadeRight = keyframes`${fadeInRight}`
 
 const Logo = styled.aside`
     display: flex;
@@ -35,9 +38,9 @@ const Logo = styled.aside`
         font-weight: 100;
         text-transform: uppercase;
 
-        letter-spacing: 14px;
+        letter-spacing: 6px;
         margin-left: 14px;
-        font-size: 24px;
+        font-size: 1.4rem;
         margin-top: 18px;
     }
 
@@ -53,9 +56,9 @@ const Logo = styled.aside`
         width: 100%;
 
         h2 {
-            letter-spacing: 16px;
-            margin-left: 24px;
-            font-size: 16px;
+            letter-spacing: 6px;
+            margin-left: 12px;
+            font-size: 18px;
             margin-top: 18px;
         }
     }
@@ -122,41 +125,43 @@ const DotButton = styled.button`
 
 const RowAnimated = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: end;
-    /* flex-direction: column; */
     flex-wrap: wrap;
 
-    /* a:nth-child(odd),
-    div:nth-child(odd) { */
-        /* margin-right: auto; */
-        /* animation: 1.5s ${fadeDown};
+    a {
+        margin: 18px;
+        min-width: 260px;
+        max-width: 260px;
+    }
+
+    a:nth-child(odd),
+    div:nth-child(odd) {
+        margin-right: auto;
+        animation: 1.5s ${fadeRight};
         animation-delay: 1s;
     }
 
     a:nth-child(even),
-    div:nth-child(even) { */
-        /* margin-left: auto; */
-        /* animation: 1.5s ${fadeUp};
+    div:nth-child(even) {
+        margin-left: auto;
+        animation: 1.5s ${fadeLeft};
         animation-delay: 1s;
-    } */
+    }
 
     @media (min-width: 992px) {
-/*
         flex-direction: row;
-        justify-content: end; */
 
         a:nth-child(odd),
         div:nth-child(odd) {
-            /* margin-right: 0; */
-            margin-bottom: 60px;
+            margin-bottom: 45px;
             animation: 1.5s ${fadeDown};
             animation-delay: 1s;
         }
 
         a:nth-child(even),
         div:nth-child(even) {
-            /* margin-left: 0; */
-            margin-top: 60px;
+            margin-top: 45px;
             animation: 1.5s ${fadeUp};
             animation-delay: 1s;
         }
@@ -185,11 +190,9 @@ const CardButton = styled.div`
     font-size: 16px;
     letter-spacing: 1.5px;
 
-    @media(max-width: 991){
+    @media (max-width: 991) {
         width: fit-content;
     }
-
-    /* width: 100%; */
 
     span {
         margin-top: 8px;
@@ -211,22 +214,7 @@ const CardButton = styled.div`
 
 const Index = () => {
     const [element, setElement] = React.useState(0)
-    const { homeRoutes } = dataUtils
-
-    function useInterval(callback, delay) {
-        const savedCallback = React.useRef()
-
-        React.useEffect(() => {
-            savedCallback.current = callback
-        }, [callback])
-
-        React.useEffect(() => {
-            let id = setInterval(() => {
-                savedCallback.current()
-            }, delay)
-            return () => clearInterval(id)
-        }, [delay])
-    }
+    const { homeRoutes } = util
 
     useInterval(() => {
         setElement(element + 1)
@@ -241,15 +229,15 @@ const Index = () => {
             <Contact />
 
             <Container>
-                <Row className="justify-content-between align-items-center">
-                    <Col className="col-9 col-lg-3 p-0 mb-5">
+                <Row className="justify-content-center justify-content-lg-between align-items-center">
+                    <Col className="col-6 col-lg-3 p-0 mb-5">
                         <Logo>
                             <img src={LogoIMG} alt="logo" />
                             <h2>Incorporadora</h2>
                         </Logo>
                     </Col>
 
-                    <Col className="col-12 col-lg-8">
+                    <Col className="col-12 col-lg-6">
                         <RowAnimated>
                             {homeRoutes.map((item, i) =>
                                 item.path ? (

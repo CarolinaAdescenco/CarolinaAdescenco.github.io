@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 
-import { midia } from "../utils/midia"
+import { premios } from "../utils/premios"
 
 import { colors } from "../utils/colors"
 import { data as util } from "../utils/data"
@@ -15,6 +15,7 @@ import Img2 from "../assets/revistas/gd8-revista-arquitectura-y-diseno.png"
 import Img3 from "../assets/revistas/gd8-revista-bamboo.png"
 import Img4 from "../assets/revistas/gd8-revista-sommer-brise.png"
 import Lightbox from "../components/lightbox"
+import { useInterval } from "../utils/functions"
 
 const Figure = styled.figure`
     position: relative;
@@ -109,21 +110,6 @@ const Premios = () => {
 
     const images = [Img1, Img2, Img3, Img4]
 
-    function useInterval(callback, delay) {
-        const savedCallback = React.useRef()
-
-        React.useEffect(() => {
-            savedCallback.current = callback
-        }, [callback])
-
-        React.useEffect(() => {
-            let id = setInterval(() => {
-                savedCallback.current()
-            }, delay)
-            return () => clearInterval(id)
-        }, [delay])
-    }
-
     useInterval(() => {
         setElement(element + 1)
 
@@ -133,7 +119,7 @@ const Premios = () => {
     }, 5000)
 
     return (
-        <Layout titlePage="Prêmios" page={util.homeRoutes[1]} margin="60px">
+        <Layout page={util.homeRoutes[1]} margin="60px">
             <Row className="align-items-start">
                 <Col className="col-12 col-lg-8">
                     <Figure>
@@ -155,17 +141,17 @@ const Premios = () => {
             <Row className="mt-2">
                 <IndexCol className="col-12">
                     <Content>
-                        <h2>{midia.first.title}</h2>
-                        <h3>{midia.first.subtitle}</h3>
+                        <h2>{premios.first.title}</h2>
+                        <h3>{premios.first.subtitle}</h3>
                         <Row className="justify-content-between">
                             <Col className="col-12 col-lg-5 align-self-center">
-                                <h4>{midia.first.pt.title}</h4>
-                                <p>{midia.first.pt.paragraph}</p>
+                                <h4>{premios.first.pt.title}</h4>
+                                <p>{premios.first.pt.paragraph}</p>
                             </Col>
                             <Col className="col-12 col-lg-2 separator"></Col>
                             <Col className="col-12 col-lg-5 align-self-center">
-                                <h4>{midia.first.en.title}</h4>
-                                <p>{midia.first.en.paragraph}</p>
+                                <h4>{premios.first.en.title}</h4>
+                                <p>{premios.first.en.paragraph}</p>
                             </Col>
                         </Row>
                     </Content>

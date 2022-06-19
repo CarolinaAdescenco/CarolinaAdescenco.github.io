@@ -26,7 +26,7 @@ const AniButton = styled(AniLink)`
     font-size: 16px;
     letter-spacing: 1.5px;
 
-    @media(max-width: 991){
+    @media (max-width: 991) {
         width: fit-content;
     }
 
@@ -34,21 +34,25 @@ const AniButton = styled(AniLink)`
         margin-top: 8px;
     }
 
+    &:hover {
+        color: ${colors.dark};
+        transform: translateY(-2px);
+        background: ${colors.white};
+    }
+
     @media (min-width: 992px) {
         max-width: 260px;
         margin: 16px;
         padding: 26px 36px;
-
-        &:hover {
-            color: ${colors.dark};
-            transform: translateY(-2px);
-            background: ${colors.white};
-        }
     }
 `
 
-const Link = ({to, children}) => {
-    return <AniButton to={to} fade duration={3}>{children}</AniButton>
+const Link = ({ to, children }) => {
+    return (
+        <AniButton to={to} fade duration={3}>
+            {children}
+        </AniButton>
+    )
 }
 
 export default Link

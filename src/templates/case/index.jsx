@@ -1,21 +1,92 @@
 import React from "react"
-import { Container, Row, Col } from "react-bootstrap"
+import styled from "styled-components"
+import { Container as Cont, Row, Col } from "react-bootstrap"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 
-import Layout from "../../components/layout"
-import { Button, Figure, Subtitulo, Wrapper } from "./styles"
-import Lightbox from "../../components/lightbox"
-import { Iframe } from "../../components/layout/styles"
+import { colors } from "../../utils/colors"
 
-const LancamentoPost = content => {
+import Layout from "../../components/layout"
+import Lightbox from "../../components/lightbox"
+import Link from "../../components/link"
+
+const TitleWrapper = styled(Row)`
+    align-items: center;
+    justify-content: center;
+    padding: 48px 0;
+    margin: 140px 0 60px 0 !important;
+
+    .box-titulo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+
+        h2 {
+            font-weight: 100;
+            text-transform: uppercase;
+            color: ${colors.transparentWhite2};
+            margin-bottom: 24px;
+        }
+
+        a {
+            margin: 0;
+        }
+    }
+
+    @media (min-width: 992px) {
+        margin: 70px 0 60px 0 !important;
+
+        .box-titulo {
+            h2 {
+                font-size: 48px;
+                letter-spacing: 6px;
+                margin-bottom: 36px;
+            }
+        }
+    }
+`
+
+const Subtitulo = styled.h3`
+    color: ${colors.white};
+    font-weight: 300;
+    margin-bottom: 24px;
+    padding-left: 24px;
+    position: relative;
+
+    &:before {
+        content: "";
+        width: 5px;
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        background-color: ${colors.transparentWhite2};
+    }
+`
+
+const Wrapper = styled(Cont)`
+    color: ${colors.white};
+    margin: 30px 0 30px 0;
+
+    @media (min-width: 992px) {
+        margin: 80px 0 0 0;
+    }
+`
+
+const Iframe = styled.iframe`
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+`
+
+const CasePost = content => {
     const {
-        endereco,
-        bannerDesktop,
-        bannerMobile,
         slug,
         title,
+        endereco,
         fichaTecnica,
         description,
+        background,
         plantas,
         galeria,
     } = content.pageContext
@@ -23,25 +94,24 @@ const LancamentoPost = content => {
     const lightbox1 = plantas !== null ? plantas.map(planta => planta.url) : []
     const lightbox2 = galeria !== null ? galeria.map(gal => gal.url) : []
 
-    return (
-        // <Layout>
-        <>
-            <Figure bgDesktop={bannerDesktop.url} bgMobile={bannerMobile.url}>
-                <Container>
-                    <Row className="justify-content-center box-principal">
-                        <Col className="col-12 col-lg-6 box-titulo">
-                            <h1>{title}</h1>
-                            <Button to="/contato">Saber mais</Button>
-                        </Col>
+    const data = {
+        title: title,
+    }
 
-                        {fichaTecnica && (
-                            <Col className="col-10 col-lg-5 box-black">
-                                {renderRichText(fichaTecnica)}
-                            </Col>
-                        )}
-                    </Row>
-                </Container>
-            </Figure>
+    return (
+        <Layout page={data} bg={background.url} margin="160px">
+            <TitleWrapper className="glass-effect">
+                <Col className="col-12 col-lg-5 box-titulo">
+                    <h2>{title}</h2>
+                    <Link to="/contato">Saber mais</Link>
+                </Col>
+
+                {fichaTecnica && (
+                    <Col className="col-10 col-lg-5">
+                        {renderRichText(fichaTecnica)}
+                    </Col>
+                )}
+            </TitleWrapper>
 
             <Wrapper>
                 {!!description && (
@@ -84,8 +154,7 @@ const LancamentoPost = content => {
                     </Row>
                 )}
             </Wrapper>
-            {/* // </Layout> */}
-        </>
+        </Layout>
     )
 }
-export default LancamentoPost
+export default CasePost

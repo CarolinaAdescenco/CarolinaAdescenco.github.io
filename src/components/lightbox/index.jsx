@@ -1,72 +1,29 @@
 import React from "react"
 import styled from "styled-components"
-import { Modal as M } from 'react-bootstrap';
-import { BsChevronRight, BsChevronLeft } from "react-icons/bs"
+import { Modal as M } from "react-bootstrap"
 
 import { colors } from "../../utils/colors"
+import { useIcon, useInterval } from "../../utils/functions"
 
 const Card = styled.img`
     width: 100%;
     height: 600px;
     display: ${props => (props.show ? "flex" : "none")};
-    background-size: cover;
     cursor: pointer;
-    border: none;
-    outline: none;
 
-    @media(min-width: 992px){
+    @media (min-width: 992px) {
         height: 465px;
-    }
-`
-
-const Modal = styled(M)`
-    button {
-        font-size: 36px;
-        position: absolute;
-        top: 48%;
-        background: transparent;
-        border: none;
-        color: ${colors.transparentWhite2};
-
-        padding: 10px;
-
-        display: flex;
-        align-items: center;
-
-        color: ${colors.transparentBlack};
-        background: ${colors.transparentWhite2};
-
-        &.next {
-            right: 50px;
-        }
-
-        &.prev {
-            left: 50px;
-        }
-
-        @media (min-width: 576px) {
-            padding: 20px;
-
-            &.next {
-                right: -50px;
-            }
-
-            &.prev {
-                left: -50px;
-            }
-        }
     }
 `
 
 const DotColumn = styled.div`
     display: flex;
     align-items: center;
-    margin: 32px auto;
     justify-content: center;
+    margin: 32px auto;
 
     @media (min-width: 992px) {
-        flex-direction: row;
-        margin: auto;
+        margin: 16px auto;
     }
 `
 
@@ -79,7 +36,6 @@ const DotButton = styled.button`
 
     color: ${colors.white};
     font-weight: 200;
-    white-space: nowrap;
 
     background: ${props =>
         props.active ? colors.white : colors.transparentWhite};
@@ -89,9 +45,52 @@ const DotButton = styled.button`
     }
 `
 
+const Modal = styled(M)`
+    button {
+        display: flex;
+        align-items: center;
+        font-size: 28px;
+        padding: 10px;
+        border: none;
+        color: ${colors.transparentBlack};
+        background: ${colors.transparentWhite2};
+
+        position: absolute;
+        top: 48%;
+
+        &.prev {
+            left: 40px;
+        }
+
+        &.next {
+            right: 40px;
+        }
+
+        @media (min-width: 576px) {
+            padding: 16px;
+
+            &.prev {
+                left: -40px;
+            }
+
+            &.next {
+                right: -40px;
+            }
+        }
+    }
+`
+
 const Lightbox = ({ data }) => {
     const [element, setElement] = React.useState(0)
     const [show, setShow] = React.useState(false)
+
+    useInterval(() => {
+        setElement(element + 1)
+
+        if (element === data.length - 1) {
+            setElement(0)
+        }
+    }, 5000)
 
     const prev = i => {
         if (i >= 0 && i <= data.length - 1) {
@@ -105,43 +104,19 @@ const Lightbox = ({ data }) => {
 
     const next = i => {
         if (i !== data.length - 1) {
-            setElement(element + 1)
-        } else {
-            setElement(0)
+            return setElement(element + 1)
         }
+
+        setElement(0)
     }
-
-    function useInterval(callback, delay) {
-        const savedCallback = React.useRef()
-
-        React.useEffect(() => {
-            savedCallback.current = callback
-        }, [callback])
-
-        React.useEffect(() => {
-            const id = setInterval(() => {
-                savedCallback.current()
-            }, delay)
-            return () => clearInterval(id)
-        }, [delay])
-    }
-
-    useInterval(() => {
-        setElement(element + 1)
-
-        if (element === data.length - 1) {
-            setElement(0)
-        }
-    }, 5000)
 
     return (
         <>
             {data.map((item, i) => (
                 <Card
-                    show={i === 0}
                     key={i}
-                    bg={data[element]}
                     src={data[element]}
+                    show={i === 0}
                     onClick={() => {
                         setShow(true)
                         setElement(i)
@@ -149,7 +124,7 @@ const Lightbox = ({ data }) => {
                 />
             ))}
 
-            <DotColumn className="col-12 mt-5 d-flex">
+            <DotColumn className="col-12">
                 {data.map((item, index) => (
                     <DotButton
                         key={item}
@@ -161,22 +136,14 @@ const Lightbox = ({ data }) => {
             </DotColumn>
 
             <Modal show={show} onHide={() => setShow(false)} centered>
-                <button
-                    className="next"
-                    type="button"
-                    onClick={() => next(element)}
-                >
-                    <BsChevronRight />
+                <button className="prev" onClick={() => prev(element)}>
+                    {useIcon("prev")}
                 </button>
 
                 <img className="img-fluid" src={data[element]} alt="" />
 
-                <button
-                    className="prev"
-                    type="button"
-                    onClick={() => prev(element)}
-                >
-                    <BsChevronLeft />
+                <button className="next" onClick={() => next(element)}>
+                    {useIcon("next")}
                 </button>
             </Modal>
         </>

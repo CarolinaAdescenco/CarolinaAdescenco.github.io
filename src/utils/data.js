@@ -6,8 +6,12 @@ export const data = {
         "CEP 05462-010",
     ],
     phone: {
-        show: "+ 55 11 3034-0355",
+        show: "(11) 3034-0355",
         link: "+551130340355"
+    },
+    cellphone: {
+        show: "(11) 97876-4049",
+        link: "+5511978764049"
     },
     homeRoutes: [
         {
@@ -53,7 +57,7 @@ export const data = {
     social: [
         {
             name: "whatsapp",
-            path: "https://html-css-js.com/css/generator/box-shadow/",
+            path: "https://wa.me/5511978764049",
         },
         {
             name: "facebook",

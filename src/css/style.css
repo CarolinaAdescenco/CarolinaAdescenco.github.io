@@ -75,4 +75,6 @@ body,
     font-weight: 100 !important;
     border-radius: 0 !important;
     background-color: black !important;
+    border: none;
+    outline: none;
 }

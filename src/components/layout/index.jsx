@@ -7,35 +7,40 @@ import Modal from "../modal"
 
 import { data } from "../../utils/data"
 
-
 import { Main, Container } from "./styles"
 
 import Contact from "../contact"
-import { ToastContainer } from "react-toastify"
 
-const Layout = ({ children, description, meta, title, titlePage, page, bg, margin }) => {
-    const { social } = data;
+const Layout = ({
+    children,
+    description,
+    meta,
+    page,
+    bg,
+    margin,
+}) => {
+    const { social } = data
+
+    const { title, subtitle } = page
 
     return (
         <>
-             <ToastContainer />
-
             <Seo
                 description={description}
                 meta={meta}
                 title={title}
-                titlePage={titlePage}
+                titlePage={subtitle}
             />
 
-            <Header className="fixed" page={page}/>
+            <Header className="fixed" page={page} />
 
             <Main bg={bg}>
-                <Container margin={margin}>
+                <Container margin={margin} style={{ position: "relative" }}>
                     {children}
                 </Container>
             </Main>
 
-            <Contact/>
+            <Contact />
 
             <CookieConsent
                 cookieName="gatsby-gdpr-google-analytics"

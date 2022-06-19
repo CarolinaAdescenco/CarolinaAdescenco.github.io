@@ -1,87 +1,123 @@
-import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { AiOutlineInstagram, AiOutlineYoutube } from 'react-icons/ai';
-import { FiMapPin, FiPhoneOutgoing } from 'react-icons/fi';
-import { ImFacebook, ImTwitter, ImWhatsapp } from 'react-icons/im';
+import React from "react"
+import styled from "styled-components"
+import { Container, Row, Col } from "react-bootstrap"
 
-import SeloAbrinq from '../../assets/selo-fundacao-abrinq.png';
-import SeloPqe from '../../assets/pqe-secovi.png';
+import { colors } from "../../utils/colors"
+import { data as util } from "../../utils/data"
+import { useIcon } from "../../utils/functions"
 
-import { data } from '../../utils/data';
+import CacaFome from "../../assets/gd8-caca-fome.png"
 
-import { Hr } from '../layout/styles';
+const FooterWrapper = styled.footer`
+    padding: 36px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: ${colors.dark};
 
-import {
-  FooterComponent, IconRow, Logos,
-} from './styles';
+    a {
+        color: ${colors.white};
+        font-weight: 200;
+        margin: 0 0 8px 0;
+        font-size: 18px;
+
+        text-decoration: none;
+
+        &:hover {
+            color: ${colors.white};
+        }
+    }
+
+    .social {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 36px 0;
+
+        a {
+            color: ${colors.white};
+            font-size: 21px;
+            margin: 0 8px;
+
+            transition: all 0.2s;
+
+            &:hover {
+                color: ${colors.white};
+                transform: translateY(-1px);
+            }
+        }
+
+        @media (min-width: 992px) {
+            justify-content: flex-end;
+            margin: 0 0 24px 0;
+        }
+    }
+
+    .caca-fome {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 70px;
+
+        img {
+            max-width: 100px;
+            margin-right: 16px;
+        }
+
+        span {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #58bec2;
+        }
+
+        @media (min-width: 992px) {
+            justify-content: flex-end;
+            margin-bottom: 35px;
+        }
+    }
+`
 
 const Footer = () => {
-  function onlyNumbers(string) {
-    return string.replace(/\D/g, '');
-  }
+    return (
+        <FooterWrapper>
+            <Container>
+                <Row>
+                    <Col className="col-12 col-lg-8">
+                        {util.adress.map((line, i) => (
+                            <p key={i}>{line}</p>
+                        ))}
 
-  function useIcon(name) {
-    switch (name) {
-      case 'whatsapp':
-        return <ImWhatsapp />;
-      case 'facebook':
-        return <ImFacebook />;
-      case 'instagram':
-        return <AiOutlineInstagram />;
-      case 'twitter':
-        return <ImTwitter />;
-      case 'youtube':
-        return <AiOutlineYoutube />;
-      default:
-        return <></>;
-    }
-  }
+                        <p>
+                            <a href={`tel:${util.phone.link}`}>
+                                Tel: {util.phone.show}
+                            </a>
+                        </p>
 
-  return (
-    <FooterComponent>
-      <Container>
-        <Hr />
+                        <p>
+                            <a href={`tel:${util.cellphone.link}`}>
+                                Tel: {util.cellphone.show}
+                            </a>
+                        </p>
+                    </Col>
+                    <Col className="col-12 col-lg-4">
+                        <div className="social">
+                            {util.social.map((midia, i) => (
+                                <a key={i} href={midia.path} target="_blank">
+                                    {useIcon(midia.name)}
+                                </a>
+                            ))}
+                        </div>
 
-        <Row className="justify-content-between">
-          <Col className="col-12 col-lg-7">
-            <a href={data.adress.link} target="_blank" rel="noreferrer">
-              <FiMapPin />
-              {data.adress.name}
-            </a>
-            <a href={`tel:+${onlyNumbers(data.phone)}`} target="_blank" rel="noreferrer">
-              <FiPhoneOutgoing />
-              {data.phone}
-            </a>
+                        <div className="caca-fome">
+                            <img src={CacaFome} alt="" />
+                            <span>Caça-Fome</span>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+        </FooterWrapper>
+    )
+}
 
-            <IconRow>
-              {
-                    data.social.map((item) => (
-                      <a key={item.name} href={item.path} target="_blank" rel="noreferrer">{useIcon(item.name)}</a>
-                    ))
-                }
-            </IconRow>
-          </Col>
-
-          <Col className="col-12 col-lg-4 mt-4 mt-lg-0">
-            <Logos>
-              <img
-                src={SeloAbrinq}
-                alt="Fundação Abrinq - Empresa amiga da criança"
-                title="Fundação Abrinq - Empresa amiga da criança"
-                className="img-fluid"
-              />
-              <img
-                src={SeloPqe}
-                alt="PQE Secovi - Programa de qualificação essencial"
-                title="PQE Secovi - Programa de qualificação essencial"
-                className="img-fluid"
-              />
-            </Logos>
-          </Col>
-        </Row>
-      </Container>
-    </FooterComponent>
-  );
-};
-
-export default Footer;
+export default Footer

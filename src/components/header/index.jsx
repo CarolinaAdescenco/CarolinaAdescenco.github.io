@@ -2,11 +2,11 @@ import React from "react"
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { Container, Row, Col } from "react-bootstrap"
-import { FiChevronsLeft } from "react-icons/fi"
 
 import LogoIMG from "../../assets/gd8-incorporadora.png"
 
 import { colors } from "../../utils/colors"
+import { useIcon } from "../../utils/functions"
 
 const HeaderWrapper = styled.header`
     display: flex;
@@ -52,7 +52,7 @@ const CardButton = styled.div`
     width: 100%;
     background: ${colors.white};
 
-    h1{
+    h1 {
         font-size: 18px;
         letter-spacing: 1.5px;
         font-weight: 300;
@@ -123,7 +123,7 @@ const Header = ({ page }) => {
 
                     <Col className="col-6 col-lg-2 ml-auto">
                         <AniButton to="/" fade duration={3}>
-                            <FiChevronsLeft />
+                            {useIcon("left-chevron")}
                             Inicio
                         </AniButton>
                     </Col>
