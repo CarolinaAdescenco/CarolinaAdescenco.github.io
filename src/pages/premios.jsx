@@ -102,7 +102,11 @@ const Content = styled.article`
 
 const IndexCol = styled(Col)`
     z-index: -1;
-    margin: 80px 0 120px 0;
+    margin: 30px 0 120px 0;
+
+    @media(min-width: 992px){
+        margin: 80px 0 120px 0;
+    }
 `
 
 const Premios = () => {

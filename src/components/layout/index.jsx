@@ -4,6 +4,7 @@ import CookieConsent from "react-cookie-consent"
 import Header from "../header"
 import Seo from "../seo"
 import Modal from "../modal"
+import Footer from "../footer"
 
 import { data } from "../../utils/data"
 
@@ -11,16 +12,7 @@ import { Main, Container } from "./styles"
 
 import Contact from "../contact"
 
-const Layout = ({
-    children,
-    description,
-    meta,
-    page,
-    bg,
-    margin,
-}) => {
-    const { social } = data
-
+const Layout = ({ children, description, meta, page, bg, margin }) => {
     const { title, subtitle } = page
 
     return (
@@ -38,6 +30,8 @@ const Layout = ({
                 <Container margin={margin} style={{ position: "relative" }}>
                     {children}
                 </Container>
+
+                {title === "Contato" && <Footer />}
             </Main>
 
             <Contact />

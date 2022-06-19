@@ -15,7 +15,6 @@ import {
 import { colors } from "../utils/colors"
 
 import Layout from "../components/layout"
-import Footer from "../components/footer"
 import { Input, InputPhone } from "../components/input"
 import LoadSnake from "../components/loader"
 
@@ -229,7 +228,6 @@ const Contato = () => {
                     </Col>
                 </CustomRow>
             </Layout>
-            <Footer />
         </>
     )
 }
