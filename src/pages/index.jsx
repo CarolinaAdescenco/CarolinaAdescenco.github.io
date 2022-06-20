@@ -1,30 +1,18 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from "react"
-import styled, { keyframes } from "styled-components"
+import { graphql } from "gatsby"
+import styled from "styled-components"
 import { Container as Cont, Row, Col } from "react-bootstrap"
-import { fadeInDown, fadeInLeft, fadeInRight, fadeInUp } from "react-animations"
 
-import LogoIMG from "../assets/gd8-incorporadora-logo.png"
 import { colors } from "../utils/colors"
 import { data as util } from "../utils/data"
-
-// import Img1 from "../assets/home/gd8-one-haus-piscina.jpeg"
-// import Img2 from "../assets/home/gd8-one-haus.jpeg"
-// import Img3 from "../assets/home/gd8-west-whales-2.jpeg"
-// import Img4 from "../assets/home/gd8-west-whales-3.jpeg"
-// import Img5 from "../assets/home/gd8-west-whales.jpeg"
+import { useInterval } from "../utils/functions"
+import { fadeDown, fadeLeft, fadeRight, fadeUp } from "../utils/keyframes"
 
 import Contact from "../components/contact"
 import Link from "../components/link"
-import { useInterval } from "../utils/functions"
-import { graphql } from "gatsby"
 
-// const images = [Img1, Img2, Img3, Img4, Img5]
-
-const fadeDown = keyframes`${fadeInDown}`
-const fadeUp = keyframes`${fadeInUp}`
-const fadeLeft = keyframes`${fadeInLeft}`
-const fadeRight = keyframes`${fadeInRight}`
+import LogoIMG from "../assets/gd8-incorporadora-logo.png"
 
 const Logo = styled.aside`
     display: flex;
@@ -227,20 +215,13 @@ export const query = graphql`
         }
     }
 `
+
 const Index = ({ data }) => {
+    const { edges } = data.allContentfulBannerHome
+    const [images] = React.useState(edges.map(({ node }) => node.imagem.url))
 
-    // const { edges } = data.allContentfulBannerHome
-
-
-    const [element, setElement] = React.useState(0)
     const { homeRoutes } = util
-
-    const images = []
-
-    // const teste = edges.map(({ node }) => node.imagem.url)
-    // console.log(teste)
-
-
+    const [element, setElement] = React.useState(0)
 
     useInterval(() => {
         setElement(element + 1)

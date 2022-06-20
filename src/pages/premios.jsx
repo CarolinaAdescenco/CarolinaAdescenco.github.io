@@ -1,21 +1,17 @@
 import * as React from "react"
 import { Col, Row } from "react-bootstrap"
 import styled from "styled-components"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-
-import { premios } from "../utils/premios"
+import Lightbox from "../components/lightbox"
 
 import { colors } from "../utils/colors"
 import { data as util } from "../utils/data"
+import { premios } from "../utils/premios"
+import { useInterval } from "../utils/functions"
 
 import ImgPremio from "../assets/premio-gd8-west-whales.jpeg"
-import Img1 from "../assets/revistas/gd8-revista-ad-best-of-maisons.png"
-import Img2 from "../assets/revistas/gd8-revista-arquitectura-y-diseno.png"
-import Img3 from "../assets/revistas/gd8-revista-bamboo.png"
-import Img4 from "../assets/revistas/gd8-revista-sommer-brise.png"
-import Lightbox from "../components/lightbox"
-import { useInterval } from "../utils/functions"
 
 const Figure = styled.figure`
     position: relative;
@@ -104,15 +100,30 @@ const IndexCol = styled(Col)`
     z-index: -1;
     margin: 30px 0 120px 0;
 
-    @media(min-width: 992px){
+    @media (min-width: 992px) {
         margin: 80px 0 120px 0;
     }
 `
 
-const Premios = () => {
-    const [element, setElement] = React.useState(0)
+export const query = graphql`
+    query {
+        allContentfulRevistas {
+            edges {
+                node {
+                    imagem {
+                        url
+                    }
+                    nome
+                }
+            }
+        }
+    }
+`
 
-    const images = [Img1, Img2, Img3, Img4]
+const Premios = ({ data }) => {
+    const { edges } = data.allContentfulRevistas
+    const [images] = React.useState(edges.map(({ node }) => node.imagem.url))
+    const [element, setElement] = React.useState(0)
 
     useInterval(() => {
         setElement(element + 1)
