@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgd8_inc_novo=self.webpackChunkgd8_inc_novo||[]).push([[152],{3750:function(n,t,o){o.d(t,{JHF:function(){return r}});var e=o(1046);function r(n){return(0,e.w_)({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"polyline",attr:{points:"11 17 6 12 11 7"}},{tag:"polyline",attr:{points:"18 17 13 12 18 7"}}]})(n)}}}]);
+//# sourceMappingURL=5e2a4920-a3d947f1330fe1114cad.js.map
