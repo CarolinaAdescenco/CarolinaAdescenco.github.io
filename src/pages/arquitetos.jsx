@@ -1,7 +1,7 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import { Container, Row, Col } from "react-bootstrap"
+import { Container as Cont, Row, Col } from "react-bootstrap"
 
 import { data as util } from "../utils/data"
 import { colors } from "../utils/colors"
@@ -12,11 +12,11 @@ import Link from "../components/link"
 
 import Img3 from "../assets/home/gd8-west-whales-2.jpeg"
 
-const CContainer = styled(Container)`
-    margin-top: 100px;
+const Container = styled(Cont)`
+    margin: 300px auto 250px auto;
 
     @media (min-width: 992px) {
-        margin-top: 0;
+        margin: 200px auto;
     }
 `
 
@@ -155,7 +155,7 @@ const Arquitetos = ({ data }) => {
 
     return (
         <Layout page={util.homeRoutes[3]} bg={Img3} margin="190px">
-            <CContainer>
+            <Container>
                 <RowAnimated>
                     {edges.map(({ node }, i) => {
                         return (
@@ -181,7 +181,7 @@ const Arquitetos = ({ data }) => {
                         )
                     })}
                 </RowAnimated>
-            </CContainer>
+            </Container>
         </Layout>
     )
 }

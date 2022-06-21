@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
-import { Container, Row, Col } from "react-bootstrap"
+import { Container as Cont, Row, Col } from "react-bootstrap"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -12,11 +12,11 @@ import Link from "../components/link"
 
 import Img3 from "../assets/home/gd8-west-whales-2.jpeg"
 
-const CContainer = styled(Container)`
-    margin-top: 100px;
+const Container = styled(Cont)`
+    margin: 300px auto 250px auto;
 
     @media (min-width: 992px) {
-        margin-top: 0;
+        margin: 200px auto;
     }
 `
 
@@ -109,7 +109,7 @@ const Cases = ({ data }) => {
 
     return (
         <Layout page={util.homeRoutes[2]} bg={Img3} margin="160px">
-            <CContainer>
+            <Container>
                 <RowAnimated>
                     {edges.map(({ node }, i) => (
                         <Col className="col-12 col-lg-auto item" key={i}>
@@ -123,7 +123,7 @@ const Cases = ({ data }) => {
                         </Col>
                     ))}
                 </RowAnimated>
-            </CContainer>
+            </Container>
         </Layout>
     )
 }

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Col, Row } from "react-bootstrap"
+import { Container as Cont, Col, Row } from "react-bootstrap"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 
@@ -101,7 +101,15 @@ const IndexCol = styled(Col)`
     margin: 30px 0 120px 0;
 
     @media (min-width: 992px) {
-        margin: 80px 0 120px 0;
+        margin: 60px 0 120px 0;
+    }
+`
+
+const Container = styled(Cont)`
+    margin: 40px auto;
+
+    @media (min-width: 992px) {
+        margin: 60px auto;
     }
 `
 
@@ -135,43 +143,45 @@ const Premios = ({ data }) => {
 
     return (
         <Layout page={util.homeRoutes[1]} margin="60px">
-            <Row className="align-items-start">
-                <Col className="col-12 col-lg-8">
-                    <Figure>
-                        <img
-                            className="img-fluid"
-                            src={ImgPremio}
-                            alt="Prêmio Master Imobiliário GD8 - West Whales"
-                            title="Prêmio Master Imobiliário GD8 - West Whales"
-                        />
+            <Container>
+                <Row className="align-items-start">
+                    <Col className="col-12 col-lg-8">
+                        <Figure>
+                            <img
+                                className="img-fluid"
+                                src={ImgPremio}
+                                alt="Prêmio Master Imobiliário GD8 - West Whales"
+                                title="Prêmio Master Imobiliário GD8 - West Whales"
+                            />
 
-                        <figcaption>West Whales</figcaption>
-                    </Figure>
-                </Col>
+                            <figcaption>West Whales</figcaption>
+                        </Figure>
+                    </Col>
 
-                <Col className="col-12 col-lg-4 mt-5 mt-lg-0">
-                    <Lightbox data={images} />
-                </Col>
-            </Row>
-            <Row className="mt-2">
-                <IndexCol className="col-12">
-                    <Content>
-                        <h2>{premios.first.title}</h2>
-                        <h3>{premios.first.subtitle}</h3>
-                        <Row className="justify-content-between">
-                            <Col className="col-12 col-lg-5 align-self-center">
-                                <h4>{premios.first.pt.title}</h4>
-                                <p>{premios.first.pt.paragraph}</p>
-                            </Col>
-                            <Col className="col-12 col-lg-2 separator"></Col>
-                            <Col className="col-12 col-lg-5 align-self-center">
-                                <h4>{premios.first.en.title}</h4>
-                                <p>{premios.first.en.paragraph}</p>
-                            </Col>
-                        </Row>
-                    </Content>
-                </IndexCol>
-            </Row>
+                    <Col className="col-12 col-lg-4 mt-5 mt-lg-0">
+                        <Lightbox data={images} height="465px"/>
+                    </Col>
+                </Row>
+                <Row className="mt-2">
+                    <IndexCol className="col-12">
+                        <Content>
+                            <h2>{premios.first.title}</h2>
+                            <h3>{premios.first.subtitle}</h3>
+                            <Row className="justify-content-between">
+                                <Col className="col-12 col-lg-5 align-self-center">
+                                    <h4>{premios.first.pt.title}</h4>
+                                    <p>{premios.first.pt.paragraph}</p>
+                                </Col>
+                                <Col className="col-12 col-lg-2 separator"></Col>
+                                <Col className="col-12 col-lg-5 align-self-center">
+                                    <h4>{premios.first.en.title}</h4>
+                                    <p>{premios.first.en.paragraph}</p>
+                                </Col>
+                            </Row>
+                        </Content>
+                    </IndexCol>
+                </Row>
+            </Container>
         </Layout>
     )
 }

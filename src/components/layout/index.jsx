@@ -6,13 +6,11 @@ import Seo from "../seo"
 import Modal from "../modal"
 import Footer from "../footer"
 
-import { data } from "../../utils/data"
-
-import { Main, Container } from "./styles"
+import { Main } from "./styles"
 
 import Contact from "../contact"
 
-const Layout = ({ children, description, meta, page, bg, margin }) => {
+const Layout = ({ children, description, meta, page, bg }) => {
     const { title, subtitle } = page
 
     return (
@@ -27,9 +25,7 @@ const Layout = ({ children, description, meta, page, bg, margin }) => {
             <Header className="fixed" page={page} />
 
             <Main bg={bg}>
-                <Container margin={margin} style={{ position: "relative" }}>
-                    {children}
-                </Container>
+                {children}
 
                 {title === "Contato" && <Footer />}
             </Main>

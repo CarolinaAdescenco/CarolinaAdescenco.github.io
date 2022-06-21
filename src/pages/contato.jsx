@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { css } from "styled-components"
-import { Col, Row } from "react-bootstrap"
+import { Container as Cont, Col, Row } from "react-bootstrap"
 import { useForm } from "react-hook-form"
 import emailjs from "@emailjs/browser"
 import Swal from "sweetalert2"
@@ -20,17 +20,27 @@ import LoadSnake from "../components/loader"
 
 import Img3 from "../assets/home/gd8-west-whales-2.jpeg"
 
+const Container = styled(Cont)`
+    margin: 250px auto 250px auto;
+
+    @media (min-width: 992px) {
+        margin: 100px auto;
+    }
+`
+
 const WrapperOption = styled.div`
     display: inline-flex;
     height: 60px;
-    width: 400px;
     align-items: center;
     justify-content: space-evenly;
+    width: 100%;
 
-    margin: 150px 0 0 0;
+    margin: 130px 0 0 0;
 
     @media (min-width: 992px) {
         margin: 0;
+        width: 400px;
+        margin: 150px 0 0 0;
     }
 `
 
@@ -173,60 +183,62 @@ const Contato = () => {
     return (
         <>
             <Layout page={page} bg={Img3} margin="160px">
-                <CustomRow>
-                    <Col className="col-12 col-lg-8">
-                        <WrapperOption>
-                            <FormOption
-                                checked={cliente}
-                                type="button"
-                                onClick={() => setCliente(true)}
-                            >
-                                <span></span> Cliente
-                            </FormOption>
-                            <FormOption
-                                checked={!cliente}
-                                type="button"
-                                onClick={() => setCliente(false)}
-                            >
-                                <span></span> Corretor
-                            </FormOption>
-                        </WrapperOption>
+                <Container>
+                    <CustomRow>
+                        <Col className="col-12 col-lg-8">
+                            <WrapperOption>
+                                <FormOption
+                                    checked={cliente}
+                                    type="button"
+                                    onClick={() => setCliente(true)}
+                                >
+                                    <span></span> Cliente
+                                </FormOption>
+                                <FormOption
+                                    checked={!cliente}
+                                    type="button"
+                                    onClick={() => setCliente(false)}
+                                >
+                                    <span></span> Corretor
+                                </FormOption>
+                            </WrapperOption>
 
-                        <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-                            <Input
-                                type="text"
-                                label="Nome"
-                                register={register}
-                                required
-                            />
+                            <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+                                <Input
+                                    type="text"
+                                    label="Nome"
+                                    register={register}
+                                    required
+                                />
 
-                            <Input
-                                type="email"
-                                label="E-mail"
-                                register={register}
-                                required
-                            />
+                                <Input
+                                    type="email"
+                                    label="E-mail"
+                                    register={register}
+                                    required
+                                />
 
-                            <InputPhone
-                                mask="(99) 99999-9999"
-                                label="Celular"
-                                register={register}
-                                required
-                            />
+                                <InputPhone
+                                    mask="(99) 99999-9999"
+                                    label="Celular"
+                                    register={register}
+                                    required
+                                />
 
-                            <Input
-                                type="text"
-                                label="Projeto"
-                                register={register}
-                                required
-                            />
+                                <Input
+                                    type="text"
+                                    label="Projeto"
+                                    register={register}
+                                    required
+                                />
 
-                            <Button type="submit">
-                                {loading ? <LoadSnake /> : "Enviar"}
-                            </Button>
-                        </FormWrapper>
-                    </Col>
-                </CustomRow>
+                                <Button type="submit">
+                                    {loading ? <LoadSnake /> : "Enviar"}
+                                </Button>
+                            </FormWrapper>
+                        </Col>
+                    </CustomRow>
+                </Container>
             </Layout>
         </>
     )

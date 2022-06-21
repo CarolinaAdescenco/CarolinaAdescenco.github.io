@@ -1,17 +1,7 @@
-import { Col, Container as Cont } from "react-bootstrap"
+import { Col } from "react-bootstrap"
 import styled, { css } from "styled-components"
 
 import { colors } from "../../utils/colors"
-
-export const Container = styled(Cont)`
-    margin-top: 130px;
-    margin-bottom: 130px;
-
-    @media(min-width: 992px){
-        margin-top: ${props => props.margin || '100px'};
-        margin-bottom: ${props => props.margin || '100px'};
-    }
-`
 
 export const TitlePage = styled.h1`
     color: ${colors.white};

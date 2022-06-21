@@ -36,9 +36,9 @@ const Logo = styled.aside`
     img {
         opacity: 0.8;
         width: auto;
-        max-width: 100%;
+        max-width: 150px;
         background-color: ${colors.themeColor};
-        padding: 16px;
+        padding: 8px;
     }
 
     @media (min-width: 992px) {
@@ -49,6 +49,11 @@ const Logo = styled.aside`
             margin-left: 12px;
             font-size: 18px;
             margin-top: 18px;
+        }
+
+        img{
+            padding: 16px;
+            max-width: 100%;
         }
     }
 `
@@ -139,20 +144,31 @@ const RowAnimated = styled.div`
     }
 
     @media (min-width: 992px) {
+        display: flex;
         flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        max-height: 400px;
+
+        a,
+        div {
+            width: 48%;
+            margin: 0;
+        }
 
         a:nth-child(odd),
         div:nth-child(odd) {
-            margin-bottom: 45px;
-            animation: 1.5s ${fadeDown};
+            animation: 1.5s ${fadeUp};
             animation-delay: 1s;
+            margin: 0 0 40px 0;
         }
 
         a:nth-child(even),
         div:nth-child(even) {
-            margin-top: 45px;
-            animation: 1.5s ${fadeUp};
+            animation: 1.5s ${fadeDown};
             animation-delay: 1s;
+            margin: 0;
         }
     }
 `
@@ -176,7 +192,7 @@ const CardButton = styled.div`
     -webkit-box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
     box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
     font-weight: 100;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 1.5px;
 
     @media (max-width: 991) {
@@ -192,6 +208,7 @@ const CardButton = styled.div`
         max-width: 260px;
         margin: 16px;
         padding: 26px 36px;
+        font-size: 16px;
 
         &:hover {
             color: ${colors.dark};
@@ -244,7 +261,7 @@ const Index = ({ data }) => {
                         </Logo>
                     </Col>
 
-                    <Col className="col-12 col-lg-6">
+                    <Col className="col-12 col-lg-7">
                         <RowAnimated>
                             {homeRoutes.map((item, i) =>
                                 item.path ? (

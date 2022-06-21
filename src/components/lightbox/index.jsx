@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { Modal as M } from "react-bootstrap"
 
 import { colors } from "../../utils/colors"
@@ -7,13 +7,15 @@ import { useIcon, useInterval } from "../../utils/functions"
 
 const Card = styled.img`
     width: 100%;
-    height: 600px;
     display: ${props => (props.show ? "flex" : "none")};
     cursor: pointer;
 
     @media (min-width: 992px) {
-        height: 465px;
+        ${props => props.height && css`
+            height: ${props.height};
+        `}
     }
+
 `
 
 const DotColumn = styled.div`
@@ -80,7 +82,7 @@ const Modal = styled(M)`
     }
 `
 
-const Lightbox = ({ data }) => {
+const Lightbox = ({ data, height }) => {
     const [element, setElement] = React.useState(0)
     const [show, setShow] = React.useState(false)
 
@@ -114,6 +116,7 @@ const Lightbox = ({ data }) => {
         <>
             {data.map((item, i) => (
                 <Card
+                    height={height}
                     key={i}
                     src={data[element]}
                     show={i === 0}

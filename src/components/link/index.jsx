@@ -23,7 +23,7 @@ const AniButton = styled(AniLink)`
     -webkit-box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
     box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
     font-weight: 100;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 1.5px;
 
     @media (max-width: 991) {
@@ -41,6 +41,7 @@ const AniButton = styled(AniLink)`
     }
 
     @media (min-width: 992px) {
+        font-size: 16px;
         max-width: 260px;
         margin: 16px;
         padding: 26px 36px;
