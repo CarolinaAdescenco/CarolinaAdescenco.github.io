@@ -1,83 +1,51 @@
-const path = require('path');
+const path = require("path")
 
 exports.createPages = async ({ graphql, actions }) => {
-  const lancamentoPost = path.resolve('src/templates/lancamento/index.jsx');
-  const portifolioPost = path.resolve('src/templates/portifolio/index.jsx');
+    const casePost = path.resolve("src/templates/case/index.jsx")
 
-  const { data } = await graphql(`
-      query {
-        allContentfulPortifolio {
-            edges {
-              node {
-                slug
-                title
-                description {
-                  raw
+    const { data } = await graphql(`
+        query {
+            allContentfulCases {
+                edges {
+                    node {
+                        slug
+                        title
+                        endereco {
+                            lat
+                            lon
+                        }
+                        fichaTecnica {
+                            raw
+                        }
+                        descricao1
+                        descricao2
+                        description {
+                            raw
+                        }
+                        background {
+                            url
+                        }
+                        plantas {
+                            url
+                            title
+                            description
+                        }
+                        galeria {
+                            url
+                            title
+                            description
+                        }
+                    }
                 }
-                endereco {
-                    lat
-                    lon
-                }
-              }
             }
         }
-        allContentfulLancamentos {
-            edges {
-              node {
-                id
-                endereco {
-                    lat
-                    lon
-                }
-                bannerDesktop {
-                  url
-                  title
-                  description
-                }
-                bannerMobile {
-                  url
-                  title
-                  description
-                }
-                slug
-                title
-                miniDescricao1
-                miniDescricao2
-                fichaTecnica {
-                    raw
-                }
-                description {
-                  raw
-                }
-                plantas {
-                  url
-                  title
-                  description
-                }
-                galeria {
-                  url
-                  title
-                  description
-                }
-              }
-            }
-        }
-      }
-    `);
+    `)
 
-  data.allContentfulLancamentos.edges.forEach((edge) => {
-    actions.createPage({
-      path: `lancamentos/${edge.node.slug}`,
-      component: lancamentoPost,
-      context: edge.node,
-    });
-  });
-
-  data.allContentfulPortifolio.edges.forEach((edge) => {
-    actions.createPage({
-      path: `portifolio/${edge.node.slug}`,
-      component: portifolioPost,
-      context: edge.node,
-    });
-  });
-};
+    data.allContentfulCases.edges.forEach(edge => {
+        actions.createPage({
+            path: `cases/${edge.node.slug}`,
+            component: casePost,
+            context: edge.node,
+        })
+    })
+}

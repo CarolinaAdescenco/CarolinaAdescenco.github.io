@@ -1,26 +1,32 @@
 import React from "react"
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { Container } from "react-bootstrap"
-import { FiChevronsLeft } from "react-icons/fi"
+import { Container, Row, Col } from "react-bootstrap"
 
 import LogoIMG from "../../assets/gd8-incorporadora.png"
 
 import { colors } from "../../utils/colors"
+import { useIcon } from "../../utils/functions"
 
 const HeaderWrapper = styled.header`
     display: flex;
     position: relative;
     z-index: 9999999;
     align-items: center;
+    margin: 16px 0 0 0;
 
-    .container {
-        display: flex;
-        align-items: center;
+    .margin-right {
+        margin-right: auto;
     }
 
-    .flex-end {
-        justify-content: flex-end;
+    .card-button {
+        margin: 16px 0 16px auto;
+    }
+
+    @media (min-width: 992px) {
+        .card-button {
+            margin: 0;
+        }
     }
 
     img {
@@ -41,18 +47,18 @@ const CardButton = styled.div`
     flex-direction: column;
     text-align: center;
     width: fit-content;
-    color: ${colors.white};
     transform: translateY(0);
     transition: 0.5s ease-in-out;
-    -webkit-box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
-    box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
-    font-size: 18px;
-    letter-spacing: 1.5px;
     width: 100%;
-
-    font-weight: 300;
-    color: ${colors.dark};
     background: ${colors.white};
+
+    h1 {
+        font-size: 18px;
+        letter-spacing: 1.5px;
+        font-weight: 300;
+        color: ${colors.dark};
+        margin: 0;
+    }
 
     span {
         margin-top: 8px;
@@ -60,7 +66,6 @@ const CardButton = styled.div`
 
     @media (min-width: 992px) {
         max-width: 260px;
-        margin: 16px;
         padding: 26px 36px;
     }
 `
@@ -80,10 +85,8 @@ const AniButton = styled(AniLink)`
     color: ${colors.white};
     transform: translateY(0);
     transition: 0.5s ease-in-out;
-    -webkit-box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
-    box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
     font-weight: 300;
-    font-size: 18px;
+    font-size: 14px;
     letter-spacing: 1.5px;
 
     svg {
@@ -96,8 +99,7 @@ const AniButton = styled(AniLink)`
 
     @media (min-width: 992px) {
         max-width: 260px;
-        margin: 16px;
-        padding: 26px 36px;
+        padding: 24px 28px;
 
         &:hover {
             color: ${colors.dark};
@@ -111,29 +113,37 @@ const Header = ({ page }) => {
 
     return (
         <HeaderWrapper>
-            <Container className="container">
-                <AniLink to="/" fade duration={2}>
-                    <img src={LogoIMG} alt="" />
-                </AniLink>
+            <Container>
+                <Row className="align-items-center">
+                    <Col className="col-6 col-lg-2 margin-right">
+                        <AniLink to="/" fade duration={2}>
+                            <img src={LogoIMG} alt="" />
+                        </AniLink>
+                    </Col>
 
-                <div className="container flex-end">
-                    <AniButton to="/" fade duration={2}>
-                        <FiChevronsLeft />
-                        Inicio
-                    </AniButton>
+                    <Col className="col-6 col-lg-2 ml-auto">
+                        <AniButton to="/" fade duration={3}>
+                            {useIcon("left-chevron")}
+                            Inicio
+                        </AniButton>
+                    </Col>
 
                     {title && (
-                        <CardButton>
-                            {title}
-                            {subtitle && (
-                                <>
-                                    <br />
-                                    <span>{subtitle}</span>
-                                </>
-                            )}
-                        </CardButton>
+                        <Col className="col-6 col-lg-3 card-button">
+                            <CardButton>
+                                <h1>
+                                    {title}
+                                    {subtitle && (
+                                        <>
+                                            <br />
+                                            <span>{subtitle}</span>
+                                        </>
+                                    )}
+                                </h1>
+                            </CardButton>
+                        </Col>
                     )}
-                </div>
+                </Row>
             </Container>
         </HeaderWrapper>
     )

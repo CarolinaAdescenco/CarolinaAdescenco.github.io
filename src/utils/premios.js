@@ -1,4 +1,4 @@
-export const midia = {
+export const premios = {
   first: {
     title: 'Vencedor do Prêmio Master Imobiliário 2011',
     subtitle: 'Master Real Estate 2011 AWARD WINNER',

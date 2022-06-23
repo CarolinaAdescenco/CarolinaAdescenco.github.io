@@ -19,16 +19,15 @@ const Seo = ({
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = `${site.siteMetadata?.title} | ${titlePage}`;
+  const defaultTitle = `${site.siteMetadata?.title} | ${title} ${titlePage}`
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={defaultTitle}
       defaultTitle={defaultTitle}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
           name: 'description',

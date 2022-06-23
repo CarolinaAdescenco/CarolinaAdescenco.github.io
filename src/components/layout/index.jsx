@@ -4,16 +4,14 @@ import CookieConsent from "react-cookie-consent"
 import Header from "../header"
 import Seo from "../seo"
 import Modal from "../modal"
+import Footer from "../footer"
 
-import { data } from "../../utils/data"
-
-
-import { Main, Container } from "./styles"
+import { Main } from "./styles"
 
 import Contact from "../contact"
 
-const Layout = ({ children, description, meta, title, titlePage, page, bg }) => {
-    const { social } = data;
+const Layout = ({ children, description, meta, page, bg }) => {
+    const { title, subtitle } = page
 
     return (
         <>
@@ -21,18 +19,18 @@ const Layout = ({ children, description, meta, title, titlePage, page, bg }) => 
                 description={description}
                 meta={meta}
                 title={title}
-                titlePage={titlePage}
+                titlePage={subtitle}
             />
 
-            <Header className="fixed" page={page}/>
+            <Header className="fixed" page={page} />
 
             <Main bg={bg}>
-                <Container>
-                    {children}
-                </Container>
+                {children}
+
+                {title === "Contato" && <Footer />}
             </Main>
 
-            <Contact/>
+            <Contact />
 
             <CookieConsent
                 cookieName="gatsby-gdpr-google-analytics"

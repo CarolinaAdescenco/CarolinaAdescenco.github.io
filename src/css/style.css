@@ -49,3 +49,32 @@ body,
     -webkit-backdrop-filter: blur(3px);
     border: 1px solid rgba(30, 28, 28, 0.99);
 }
+
+.swal2-popup{
+    border-radius: 0px !important;
+}
+
+.swal2-title{
+    font-weight: 300 !important;
+    text-transform: uppercase !important;
+    color: #100e0e !important;
+    letter-spacing: 2.5px !important;
+    font-size: 21px;
+}
+
+.swal2-html-container{
+    font-weight: 300 !important;
+    text-transform: uppercase !important;
+    color: #100e0e !important;
+    letter-spacing: 2.5px !important;
+    font-size: 14px;
+}
+
+.swal2-confirm{
+    letter-spacing: 3px;
+    font-weight: 100 !important;
+    border-radius: 0 !important;
+    background-color: black !important;
+    border: none;
+    outline: none;
+}

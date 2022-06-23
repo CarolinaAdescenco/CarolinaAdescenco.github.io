@@ -1,17 +1,7 @@
-import { Col, Container as Cont } from "react-bootstrap"
+import { Col } from "react-bootstrap"
 import styled, { css } from "styled-components"
 
 import { colors } from "../../utils/colors"
-
-export const Container = styled(Cont)`
-    margin-top: 130px;
-    margin-bottom: 130px;
-
-    @media(min-width: 992px){
-        margin-top: 190px;
-        margin-bottom: 100px;
-    }
-`
 
 export const TitlePage = styled.h1`
     color: ${colors.white};
@@ -167,6 +157,7 @@ export const Main = styled.main`
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
+            background-attachment: fixed;
 
             background-blend-mode: multiply;
             background-color: ${colors.transparentBlack};
@@ -179,9 +170,9 @@ export const Main = styled.main`
             height: initial;
             min-height: 100vh;
 
-            @media (min-width: 992px) {
-                width: 100vw;
-            }
+
+            width: 100vw;
+            min-width: -webkit-fill-available;
         `}
 `
 

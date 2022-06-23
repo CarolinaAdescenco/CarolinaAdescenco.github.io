@@ -23,30 +23,37 @@ const AniButton = styled(AniLink)`
     -webkit-box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
     box-shadow: 6px 12px 25px -5px rgba(0, 0, 0, 0.67);
     font-weight: 100;
-    font-size: 18px;
+    font-size: 14px;
     letter-spacing: 1.5px;
-    width: 100%;
+
+    @media (max-width: 991) {
+        width: fit-content;
+    }
 
     span {
         margin-top: 8px;
     }
 
+    &:hover {
+        color: ${colors.dark};
+        transform: translateY(-2px);
+        background: ${colors.white};
+    }
+
     @media (min-width: 992px) {
+        font-size: 16px;
         max-width: 260px;
         margin: 16px;
         padding: 26px 36px;
-
-        &:hover {
-            color: ${colors.dark};
-            font-weight: 300;
-            transform: translateY(-2.5px);
-            background: ${colors.white};
-        }
     }
 `
 
-const Link = ({to, children}) => {
-    return <AniButton to={to} fade duration={2}>{children}</AniButton>
+const Link = ({ to, children }) => {
+    return (
+        <AniButton to={to} fade duration={3}>
+            {children}
+        </AniButton>
+    )
 }
 
 export default Link
