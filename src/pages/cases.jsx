@@ -102,13 +102,14 @@ export const query = graphql`
             }
         }
     }
+
 `
 
 const Cases = ({ data }) => {
     const { edges } = data.allContentfulCases
 
     return (
-        <Layout page={util.homeRoutes[2]} bg={Img3} margin="160px">
+        <Layout page={util.routes[2]} bg={Img3} margin="160px">
             <Container>
                 <RowAnimated>
                     {edges.map(({ node }, i) => (

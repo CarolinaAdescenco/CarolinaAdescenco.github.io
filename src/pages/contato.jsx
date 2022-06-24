@@ -182,7 +182,7 @@ const Contato = () => {
 
     return (
         <>
-            <Layout page={page} bg={Img3} margin="160px">
+            <Layout page={page} bg={Img3}>
                 <Container>
                     <CustomRow>
                         <Col className="col-12 col-lg-8">

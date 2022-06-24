@@ -142,7 +142,7 @@ const Premios = ({ data }) => {
     }, 5000)
 
     return (
-        <Layout page={util.homeRoutes[1]} margin="60px">
+        <Layout page={util.routes[1]} margin="60px">
             <Container>
                 <Row className="align-items-start">
                     <Col className="col-12 col-lg-8">
