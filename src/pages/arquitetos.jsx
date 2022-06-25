@@ -152,9 +152,10 @@ export const query = graphql`
 
 const Arquitetos = ({ data }) => {
     const { edges } = data.allContentfulArquitetos
+    const { routes } = util
 
     return (
-        <Layout page={util.homeRoutes[3]} bg={Img3} margin="190px">
+        <Layout page={routes[3]} bg={Img3} margin="190px">
             <Container>
                 <RowAnimated>
                     {edges.map(({ node }, i) => {

@@ -105,10 +105,11 @@ export const query = graphql`
 `
 
 const Cases = ({ data }) => {
+    const { routes } = util
     const { edges } = data.allContentfulCases
 
     return (
-        <Layout page={util.homeRoutes[2]} bg={Img3} margin="160px">
+        <Layout page={routes[2]} bg={Img3} margin="160px">
             <Container>
                 <RowAnimated>
                     {edges.map(({ node }, i) => (

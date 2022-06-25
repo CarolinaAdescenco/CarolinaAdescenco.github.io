@@ -129,6 +129,7 @@ export const query = graphql`
 `
 
 const Premios = ({ data }) => {
+    const { routes } = util
     const { edges } = data.allContentfulRevistas
     const [images] = React.useState(edges.map(({ node }) => node.imagem.url))
     const [element, setElement] = React.useState(0)
@@ -142,7 +143,7 @@ const Premios = ({ data }) => {
     }, 5000)
 
     return (
-        <Layout page={util.homeRoutes[1]} margin="60px">
+        <Layout page={routes[1]} margin="60px">
             <Container>
                 <Row className="align-items-start">
                     <Col className="col-12 col-lg-8">

@@ -238,7 +238,7 @@ const Index = ({ data }) => {
     const { edges } = data.allContentfulBannerHome
     const [images] = React.useState(edges.map(({ node }) => node.imagem.url))
 
-    const { homeRoutes } = util
+    const { routes } = util
     const [element, setElement] = React.useState(0)
 
     useInterval(() => {
@@ -266,7 +266,7 @@ const Index = ({ data }) => {
 
                         <Col className="col-12 col-lg-7">
                             <RowAnimated>
-                                {homeRoutes.map((item, i) =>
+                                {routes.map((item, i) =>
                                     item.path ? (
                                         <Link key={i} to={item?.path}>
                                             {item.title}
