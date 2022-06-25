@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { graphql, StaticQuery } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import { colors } from "../../utils/colors"
@@ -63,20 +64,39 @@ const Wrapper = styled.div`
     }
 `
 
-const Contact = () => {
-    return (
-        <Wrapper>
-            <h2>Contato</h2>
+const Contact = () => (
+    <StaticQuery
+        query={graphql`
+            query {
+                contentfulPaginas(titulo: { eq: "Contato" }) {
+                    informacoes {
+                        social {
+                            name
+                            path
+                        }
+                    }
+                }
+            }
+        `}
+        render={data => {
+            const { social } = data.contentfulPaginas.informacoes
 
-            <div className="links">
-                <a href="#">{useIcon("whatsapp")}</a>
+            return (
+                <Wrapper>
+                    <h2>Contato</h2>
 
-                <AniLink fade duration={3} to="/contato">
-                    {useIcon("email")}
-                </AniLink>
-            </div>
-        </Wrapper>
-    )
-}
+                    <div className="links">
+                        <a href={social[0].path} target="_blank">
+                            {useIcon(social[0].name)}
+                        </a>
 
+                        <AniLink fade duration={3} to="/contato">
+                            {useIcon("email")}
+                        </AniLink>
+                    </div>
+                </Wrapper>
+            )
+        }}
+    />
+)
 export default Contact

@@ -35,7 +35,7 @@ const WrapperOption = styled.div`
     justify-content: space-evenly;
     width: 100%;
 
-    margin: 130px 0 0 0;
+    margin: 10px 0 0 0;
 
     @media (min-width: 992px) {
         margin: 0;

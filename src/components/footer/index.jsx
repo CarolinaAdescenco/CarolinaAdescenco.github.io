@@ -1,12 +1,13 @@
 import React from "react"
 import styled from "styled-components"
+import { graphql, StaticQuery } from "gatsby"
 import { Container, Row, Col } from "react-bootstrap"
 
 import { colors } from "../../utils/colors"
-import { data as util } from "../../utils/data"
 import { useIcon } from "../../utils/functions"
 
 import CacaFome from "../../assets/gd8-caca-fome.png"
+
 
 const FooterWrapper = styled.footer`
     padding: 36px 0;
@@ -80,43 +81,83 @@ const FooterWrapper = styled.footer`
 
 const Footer = () => {
     return (
-        <FooterWrapper>
-            <Container>
-                <Row>
-                    <Col className="col-12 col-lg-8">
-                        {util.adress.map((line, i) => (
-                            <p key={i}>{line}</p>
-                        ))}
+        <StaticQuery
+            query={graphql`
+                query {
+                    contentfulPaginas(titulo: { eq: "Contato" }) {
+                        informacoes {
+                            adress
+                            cellphone {
+                                link
+                                show
+                            }
+                            phone {
+                                link
+                                show
+                            }
+                            social {
+                                name
+                                path
+                            }
+                        }
+                    }
+                }
+            `}
+            render={data => {
+                const {
+                    adress,
+                    cellphone,
+                    phone,
+                    social,
+                } = data.contentfulPaginas.informacoes
 
-                        <p>
-                            <a href={`tel:${util.phone.link}`}>
-                                Tel: {util.phone.show}
-                            </a>
-                        </p>
+                return (
+                    <FooterWrapper>
+                        <Container>
+                            <Row>
+                                <Col className="col-12 col-lg-8">
+                                    {adress.map(
+                                        (line, i) => (
+                                            <p key={i}>{line}</p>
+                                        )
+                                    )}
 
-                        <p>
-                            <a href={`tel:${util.cellphone.link}`}>
-                                Tel: {util.cellphone.show}
-                            </a>
-                        </p>
-                    </Col>
-                    <Col className="col-12 col-lg-4">
-                        <div className="social">
-                            {util.social.map((midia, i) => (
-                                <a key={i} href={midia.path} target="_blank">
-                                    {useIcon(midia.name)}
-                                </a>
-                            ))}
-                        </div>
+                                    <p>
+                                        <a href={`tel:${phone.link}`}>
+                                            Tel: {phone.show}
+                                        </a>
+                                    </p>
 
-                        <div className="caca-fome">
-                            <img src={CacaFome} alt="" />
-                            <span>Caça-Fome</span>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
-        </FooterWrapper>
+                                    <p>
+                                        <a href={`tel:${cellphone.link}`}>
+                                            Tel: {cellphone.show}
+                                        </a>
+                                    </p>
+                                </Col>
+                                <Col className="col-12 col-lg-4">
+                                    <div className="social">
+                                        {social.map((midia, i) => (
+                                            <a
+                                                key={i}
+                                                href={midia.path}
+                                                target="_blank"
+                                            >
+                                                {useIcon(midia.name)}
+                                            </a>
+                                        ))}
+                                    </div>
+
+                                    <div className="caca-fome">
+                                        <img src={CacaFome} alt="" />
+                                        <span>Caça-Fome</span>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </FooterWrapper>
+                )
+            }}
+        />
     )
 }
 

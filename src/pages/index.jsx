@@ -11,6 +11,7 @@ import { fadeDown, fadeLeft, fadeRight, fadeUp } from "../utils/keyframes"
 
 import Contact from "../components/contact"
 import Link from "../components/link"
+import Seo from "../components/seo"
 
 import LogoIMG from "../assets/gd8-incorporadora-logo.png"
 
@@ -51,7 +52,7 @@ const Logo = styled.aside`
             margin-top: 18px;
         }
 
-        img{
+        img {
             padding: 16px;
             max-width: 100%;
         }
@@ -249,59 +250,62 @@ const Index = ({ data }) => {
     }, 5000)
 
     return (
-        <Background bg={images[element]}>
-            <Contact />
+        <>
+            <Seo title="Home" />
+            <Background bg={images[element]}>
+                <Contact />
 
-            <Container>
-                <Row className="justify-content-center justify-content-lg-between align-items-center">
-                    <Col className="col-6 col-lg-3 p-0 mb-5">
-                        <Logo>
-                            <img src={LogoIMG} alt="logo" />
-                            <h2>Incorporadora</h2>
-                        </Logo>
-                    </Col>
+                <Container>
+                    <Row className="justify-content-center justify-content-lg-between align-items-center">
+                        <Col className="col-6 col-lg-3 p-0 mb-5">
+                            <Logo>
+                                <img src={LogoIMG} alt="logo" />
+                                <h2>Incorporadora</h2>
+                            </Logo>
+                        </Col>
 
-                    <Col className="col-12 col-lg-7">
-                        <RowAnimated>
-                            {homeRoutes.map((item, i) =>
-                                item.path ? (
-                                    <Link key={i} to={item?.path}>
-                                        {item.title}
-                                        {item.subtitle && (
-                                            <>
-                                                <br />
-                                                <span>{item.subtitle}</span>
-                                            </>
-                                        )}
-                                    </Link>
-                                ) : (
-                                    <CardButton key={i}>
-                                        {item.title}
-                                        {item.subtitle && (
-                                            <>
-                                                <br />
-                                                <span>{item.subtitle}</span>
-                                            </>
-                                        )}
-                                    </CardButton>
-                                )
-                            )}
-                        </RowAnimated>
-                    </Col>
+                        <Col className="col-12 col-lg-7">
+                            <RowAnimated>
+                                {homeRoutes.map((item, i) =>
+                                    item.path ? (
+                                        <Link key={i} to={item?.path}>
+                                            {item.title}
+                                            {item.subtitle && (
+                                                <>
+                                                    <br />
+                                                    <span>{item.subtitle}</span>
+                                                </>
+                                            )}
+                                        </Link>
+                                    ) : (
+                                        <CardButton key={i}>
+                                            {item.title}
+                                            {item.subtitle && (
+                                                <>
+                                                    <br />
+                                                    <span>{item.subtitle}</span>
+                                                </>
+                                            )}
+                                        </CardButton>
+                                    )
+                                )}
+                            </RowAnimated>
+                        </Col>
 
-                    <DotColumn className="col-12 mt-5 d-none d-lg-flex">
-                        {images.map((item, index) => (
-                            <DotButton
-                                key={item}
-                                type="button"
-                                active={index === element}
-                                onClick={() => setElement(index)}
-                            />
-                        ))}
-                    </DotColumn>
-                </Row>
-            </Container>
-        </Background>
+                        <DotColumn className="col-12 mt-5 d-none d-lg-flex">
+                            {images.map((item, index) => (
+                                <DotButton
+                                    key={index}
+                                    type="button"
+                                    active={index === element}
+                                    onClick={() => setElement(index)}
+                                />
+                            ))}
+                        </DotColumn>
+                    </Row>
+                </Container>
+            </Background>
+        </>
     )
 }
 
